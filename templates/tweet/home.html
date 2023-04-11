@@ -53,7 +53,6 @@
                         <div class="col-md-12 mb-2">
                             <div class="card">
                                 <div class="card-body">
-<<<<<<< HEAD
                                     {% if tw.author == user %}
                                         <div style="text-align: right">
                                             <a href="/tweet/delete/{{ tw.id }}">
@@ -66,19 +65,10 @@
                                             <span class="badge rounded-pill bg-success">보기</span>
                                         </a>
                                     </div>
-
-=======
->>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
                                     <div class="media">
                                         <div class="media-body">
                                             <h5 class="mt-0">{{ tw.content }}</h5>
                                         </div>
-<<<<<<< HEAD
-                                        <div style="text-align: right">
-                                            <span style="font-size: small">{{ tw.author.username }}-{{ tw.created_at|timesince }} 전</span>
-                                        </div>
-
-=======
                                         {% if tw.author == user %}
                                             <div style="text-align: right">
                                                 <a href="/tweet/delete/{{ tw.id }}">
@@ -94,7 +84,6 @@
                                         <div style="text-align: right">
                                             <span style="font-size: small">{{ tw.author.username }}-{{ tw.created_at|timesince }} 전</span>
                                         </div>
->>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
                                     </div>
                                 </div>
                             </div>
