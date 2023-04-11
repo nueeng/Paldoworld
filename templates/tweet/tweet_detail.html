@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+
+=======
 <!-- templates/tweet/tweet_detail.html -->
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
 
 {% extends 'base.html' %}
 
@@ -16,6 +20,10 @@
                         <h5 class="card-title">{{ user.username }}</h5>
                         <p class="card-text"> {{ user.nickname }}</p>
                         <p class="card-text"> {{ user.speech }}</p>
+<<<<<<< HEAD
+
+=======
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
                     </div>
                 </div>
             </div>
@@ -25,10 +33,22 @@
                     <div class="col-md-12 mb-2">
                         <div class="card">
                             <div class="card-body">
+<<<<<<< HEAD
+                                {% if tweet.author == user %}
+                                    <div style="text-align: right">
+                                        <a href="/tweet/delete/{{ tweet.id }}">
+                                            <span class="badge rounded-pill bg-danger">삭제</span>
+                                        </a>
+                                    </div>
+                                {% endif %}
+=======
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
                                 <div class="media">
                                     <div class="media-bod">
                                         <h5 class="mt-0">{{ tweet.content }}</h5>
                                     </div>
+<<<<<<< HEAD
+=======
                                     {% if tweet.author == user %}
                                         <div style="text-align: right">
                                             <a href="/tweet/edit/{{ tweet.id }}">
@@ -41,6 +61,7 @@
                                             </a>
                                         </div>
                                     {% endif %}
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
                                     <div style="text-align: right">
                                         <span style="font-size: small">{{ tweet.author.username }}-{{ tweet.created_at|timesince }} 전</span>
                                     </div>
@@ -57,7 +78,11 @@
                 </form>
                 <hr>
                 <!-- 반복문이 들어 갈 곳 -->
+<<<<<<< HEAD
+                {% for cm in comment %}
+=======
 								{% for cm in comment %}
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
                     <div class="row">
                         <div class="col-md-12">
                             <div class="media">
@@ -69,7 +94,11 @@
                                 {% if cm.author == user %}
                                     <div style="float: right">
                                         <a href="/tweet/comment/delete/{{ cm.id }}">
+<<<<<<< HEAD
+                                            <span class="btn bg-danger">삭제</span>
+=======
                                             <span class="badge bg-danger">삭제</span>
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
                                         </a>
                                     </div>
                                 {% endif %}

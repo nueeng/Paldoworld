@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import TweetModel, TweetComment
 from django.contrib.auth.decorators import login_required
+<<<<<<< HEAD
+=======
 from django.http import HttpResponse
 
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
 # Create your views here.
 
 def home(request):
@@ -17,12 +20,33 @@ def tweet(request):
         user=request.user.is_authenticated
         if user:
             all_tweet = TweetModel.objects.all().order_by('-created_at')
+<<<<<<< HEAD
+            return render(request, 'tweet/tweet.html', {'tweet':all_tweet})
+=======
             return render(request, 'tweet/home.html', {'tweet':all_tweet})
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
         else:
             return redirect('/login')
 
     elif request.method == 'POST':
         user = request.user
+<<<<<<< HEAD
+        my_tweet = TweetModel()
+        my_tweet.author = user
+        my_tweet.content = request.POST.get('my-content','')
+        my_tweet.save()
+        return redirect('/tweet')
+def main(request):
+    if request.method == 'GET':
+        user = request.user.is_authenticated
+        if user:
+            return render(request, 'index.html')
+        else:
+            return redirect('/login')
+
+@login_required #사용자가 로그인이 되어있어야만 접근이 가능하다.라는 의미로 설정해준것
+def delete_tweet(request, id):
+=======
         content = request.POST.get('my-content','')
 
         if content == "": # 빈 칸일 시 if문 처리
@@ -37,17 +61,23 @@ def tweet(request):
 
 @login_required # 사용자가 로그인이 되어있어야만 접근이 가능하다.라는 의미로 설정해준것
 def delete_tweet(request, id): # 삭제
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
     my_tweet = TweetModel.objects.get(id=id)
     my_tweet.delete()
     return redirect('/tweet')
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
 @login_required # 상세 보기
 def detail_tweet(request, id):
     my_tweet = TweetModel.objects.get(id=id)
     tweet_comment = TweetComment.objects.filter(tweet_id=id).order_by('-created_at')
     return render(request,'tweet/tweet_detail.html',{'tweet':my_tweet,'comment':tweet_comment})
 
+<<<<<<< HEAD
+=======
 @login_required # 트윗 수정 페이지로 이동하는 함수
 def edit_tweet(request, id):
     my_tweet = TweetModel.objects.get(id=id)
@@ -68,6 +98,7 @@ def update_tweet(request, id):
         new_tweet.save()
         return render(request,'tweet/tweet_detail.html',{'tweet':new_tweet,'comment':tweet_comment})
 
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
 
 @login_required # 댓글 작성
 def write_comment(request, id):
@@ -89,4 +120,8 @@ def delete_comment(request, id):
     comment = TweetComment.objects.get(id=id)
     current_tweet = comment.tweet.id
     comment.delete()
+<<<<<<< HEAD
     return redirect('/tweet/'+str(current_tweet))
+=======
+    return redirect('/tweet/'+str(current_tweet))
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4

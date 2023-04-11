@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+from django.shortcuts import render
+
+# Create your views here.
+=======
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import GuestbookModel
 from django.contrib.auth.decorators import login_required
@@ -37,3 +42,4 @@ def delete_guestbook(request, id):
     my_guestbook.delete()
     return redirect('/guestbook')
 
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4

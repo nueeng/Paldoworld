@@ -20,8 +20,13 @@ def sign_up_view(request):  # 회원가입 함수
         password2 = request.POST.get('password2', None)
         nickname = request.POST.get('nickname', None)
         speech = request.POST.get('speech', None)
+<<<<<<< HEAD
+        # site_address = request.POST.get('site_address', None)
+        # tmi = request.POST.get('tmi', None)
+=======
         site_address = request.POST.get('site_address', None)
         tmi = request.POST.get('tmi', None)
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
 
         if password != password2:
             return render(request, 'user/sign-up.html')
@@ -30,7 +35,11 @@ def sign_up_view(request):  # 회원가입 함수
             if exist_user:
                 return render(request, 'user/sign-up.html')
             else:
+<<<<<<< HEAD
+                UserModel.objects.create_user(username=username, password=password, speech=speech, nickname=nickname)
+=======
                 UserModel.objects.create_user(username=username, password=password, speech=speech, nickname=nickname, site_address=site_address, tmi=tmi)
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
                 return redirect('/login')
 
 
@@ -61,4 +70,8 @@ def login_view(request):
 @login_required #사용자가 로그인이 되어있어야만 접근이 가능하다.라는 의미로 설정해준것
 def logout(request):
     auth.logout(request)
+<<<<<<< HEAD
     return redirect('/')
+=======
+    return redirect('/')
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4

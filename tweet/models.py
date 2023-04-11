@@ -20,5 +20,9 @@ class TweetComment(models.Model):
     author = models.ForeignKey(UserModel, on_delete=models.CASCADE)
     comment = models.CharField(max_length=256)
     created_at = models.DateTimeField(auto_now_add=True)
+<<<<<<< HEAD
+    updated_at = models.DateTimeField(auto_now=True)
+=======
     updated_at = models.DateTimeField(auto_now=True)
     
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
