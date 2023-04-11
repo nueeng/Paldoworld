@@ -20,8 +20,8 @@ def sign_up_view(request):  # 회원가입 함수
         password2 = request.POST.get('password2', None)
         nickname = request.POST.get('nickname', None)
         speech = request.POST.get('speech', None)
-        # site_address = request.POST.get('site_address', None)
-        # tmi = request.POST.get('tmi', None)
+        site_address = request.POST.get('site_address', None)
+        tmi = request.POST.get('tmi', None)
 
         if password != password2:
             return render(request, 'user/sign-up.html')
@@ -30,7 +30,7 @@ def sign_up_view(request):  # 회원가입 함수
             if exist_user:
                 return render(request, 'user/sign-up.html')
             else:
-                UserModel.objects.create_user(username=username, password=password, speech=speech, nickname=nickname)
+                UserModel.objects.create_user(username=username, password=password, speech=speech, nickname=nickname, site_address=site_address, tmi=tmi)
                 return redirect('/login')
 
 
