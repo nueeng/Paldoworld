@@ -21,5 +21,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('user.urls')),
     path('',include('tweet.urls')),
+<<<<<<< HEAD
+    # path('',include('guestbook.urls')),
+
+=======
     path('',include('guestbook.urls')),
+>>>>>>> 605e662dbf1d04c4f35ea3f53ee4d49d1c2291d4
 ]
