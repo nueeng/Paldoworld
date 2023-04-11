@@ -8,7 +8,7 @@ def guestbook(request):
         user = request.user.is_authenticated
         if user:
             all_guestbook = GuestbookModel.objects.all().order_by('-created_at')
-            return render(request, 'guestbook_1/guestbook.html', {'guestbook': all_guestbook})
+            return render(request, 'guestbook/guestbook.html', {'guestbook': all_guestbook})
         else:
             return redirect('/login')
 
@@ -25,7 +25,7 @@ def guestbook(request):
 def edit_guestbook(request, id):
     guestbook = get_object_or_404(GuestbookModel, id=id)
     if request.method == 'GET':
-        return render(request, 'guestbook_1/edit_guestbook.html', {'guestbook': guestbook})
+        return render(request, 'guestbook/edit_guestbook.html', {'guestbook': guestbook})
     elif request.method == 'POST':
         guestbook.content = request.POST.get('my-content', '')
         guestbook.save()
