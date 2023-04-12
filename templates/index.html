@@ -10,16 +10,20 @@
 {% block content %}
         <div class="container timeline-container">
         <div class="row">
+            {% if user.is_authenticated %}
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ user.username }}</h5>
                         <p class="card-text"> {{ user.nickname }}</p>
                         <p class="card-text"> {{ user.speech }}</p>
-
                     </div>
                 </div>
             </div>
+            {% else %}
+            <div class="col-md-3">
+            </div>
+            {% endif %}
             <div class="col-md-7">
                 <div style="text-align:center;">
                     <h2>추억의 8&#186;월드 입니다.</h2>

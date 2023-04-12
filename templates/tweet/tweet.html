@@ -12,16 +12,20 @@
     <div class="container timeline-container">
         <div class="row">
             <!-- 왼쪽 컬럼 -->
+            {% if user.is_authenticated %}
             <div class="col-md-3">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">{{ user.username }}</h5>
                         <p class="card-text"> {{ user.nickname }}</p>
                         <p class="card-text"> {{ user.speech }}</p>
-
                     </div>
                 </div>
             </div>
+            {% else %}
+            <div class="col-md-3">
+            </div>
+            {% endif %}
             <!-- 오른 쪽 컬럼-->
             <div class="col-md-7">
                 <!-- 글을 작성 하는 곳 -->
