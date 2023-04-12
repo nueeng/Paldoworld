@@ -26,21 +26,27 @@
                     <input type="password" class="form-control" id="password2" name="password2">
                 </div>
                 <div class="form-group mt-2 mb-2">
-                    <label for="nickname">nickname</label>
+                    <label for="nickname">닉네임</label>
                     <input type="text" class="form-control" id="nickname" name="nickname">
                 </div>
                 <div class="form-group mt-2 mb-2">
-                    <label for="speech">speech</label>
+                    <label for="speech">한줄소개</label>
                     <input type="text" class="form-control" id="speech" name="speech">
                 </div>
                 <div class="form-group mt-2 mb-2">
-                    <label for="site_address">site_address</label>
+                    <label for="site_address">이메일 주소</label>
                     <input type="text" class="form-control" id="site_address" name="site_address">
                 </div>
                 <div class="form-group mt-2 mb-2">
                     <label for="tmi">tmi</label>
                     <input type="text" class="form-control" id="tmi" name="tmi">
                 </div>
+
+                {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endif %}
                 <hr>
                 <div class="right_form">
                     <button type="submit" class="btn btn-outline-info">회원가입</button> {# form 안에있으면 form을 실행시켜주는 역할을한다. #}
