@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import GuestbookModel
+from .models import GuestbookModel, UserModel
 from django.contrib.auth.decorators import login_required
 
 
@@ -41,8 +41,9 @@ def delete_guestbook(request, id):
     my_guestbook.delete()
     return redirect('/guestbook')
 
-def view_guestbook(request, username):
-    owner = get_object_or_404(User, username=username)
-    guestbook_entries = Guestbook.objects.filter(owner=owner)
-    context = {'owner_username': owner.username, 'guestbook_entries': guestbook_entries}
-    return render(request, 'guestbook/view_guestbook.html', context)
+def view_guestbook(request):
+    if request.method == 'GET': # GET 렌더 함수
+        owner = UserModel.objects.all()
+        # guestbook_entries = Guestbook.objects.filter(owner=owner)
+        # context = {'owner_username': owner.username, 'guestbook_entries': guestbook_entries}
+        return render(request, 'guestbook/view_guestbook.html', {'owner':owner})

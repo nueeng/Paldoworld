@@ -2,10 +2,10 @@
 
 {% extends 'base.html' %}
 {% block title %}
-    담벼락
+    게시글 작성
 {% endblock %}
 {% block name %}
-    담벼락
+    게시글 작성
 {% endblock %}
 
 {% block content %}
@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <div class="media">
                         <div class="media-body">
-                            <h5 class="mt-0">담벼락</h5>
+                            <h5 class="mt-0">게시글</h5>
                             <p>
                             <form action="/tweet/" method="post">
                                 {% csrf_token %}
@@ -32,39 +32,5 @@
                 </div>
             </div>
         </div>
-    </div>
-    <hr>
-    <!-- 작성 된 글이 나오는 곳 -->
-    <div class="row">
-        {% for tw in tweet %}
-            <div class="col-md-12 mb-2">
-                <div class="card">
-                    <div class="card-body">
-                        {% if tw.author == user %}
-                            <div style="text-align: right">
-                                <a href="/tweet/delete/{{ tw.id }}">
-                                    <span class="btn btn-outline-info bg-danger">삭제</span>
-                                </a>
-                            </div>
-                        {% endif %}
-                        <div style="text-align: right; margin-top:10px">
-                            <a href="/tweet/{{ tw.id }}">
-                                <span class="btn btn-outline-info">보기</span>
-                            </a>
-                        </div>
-
-                        <div class="media">
-                            <div class="media-body">
-                                <h5 class="mt-0">{{ tw.content }}</h5>
-                            </div>
-                            <div style="text-align: right">
-                                <span style="font-size: small">{{ tw.author.username }}-{{ tw.created_at|timesince }} 전</span>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
     </div>
 {% endblock %}
