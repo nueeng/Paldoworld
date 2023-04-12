@@ -43,7 +43,7 @@ def detail_tweet(request, id):  # 게시글 상세페이지 렌더 함수
 def delete_tweet(request, id): # 게시글 삭제함수
     my_tweet = TweetModel.objects.get(id=id)
     my_tweet.delete()
-    return redirect('/tweet')
+    return redirect('/tweet_list')
 
 
 @login_required  # 게시글 수정 페이지로 이동하는 함수
