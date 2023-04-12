@@ -1,6 +1,7 @@
 #user/models.py
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.conf import settings # follow model 추가 
 
 
 # Create your models here.
@@ -12,3 +13,4 @@ class UserModel(AbstractUser):
     speech = models.CharField(max_length=256, default='') # 상태정보
     site_address = models.CharField(max_length=256, default='') # 상태정보
     tmi = models.CharField(max_length=256, default='') # 상태정보
+    follow = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='follower') # follow model 추가 / follow 기능 쓰려면 migrate 다시 해야함!
