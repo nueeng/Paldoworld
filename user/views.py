@@ -57,8 +57,25 @@ def login_view(request):
             return render(request, 'user/login.html')
 
 
-
-@login_required #사용자가 로그인이 되어있어야만 접근이 가능하다.라는 의미로 설정해준것
+@login_required # 사용자가 로그인이 되어있어야만 접근이 가능하다.라는 의미로 설정해준것
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+
+@login_required
+def userlist_view(request): # 유저리스트 띄우기 함수 / 이런식으로 할지 아니면 팔로우하고 있는 유저만 띄울지
+    if request.method == 'GET':
+        user_list = UserModel.objects.all().exclude(username=request.user.username)
+        return render(request, 'user/follow.html', {'user_list':user_list})
+    
+
+@login_required
+def follow_view(request, id):
+    me = request.user
+    click_user = UserModel.objects.get(id=id)
+    if me in click_user.follower.all():
+        click_user.follower.remove(request.user)
+    else:
+        click_user.follower.add(request.user)
+    return redirect('/follow')
