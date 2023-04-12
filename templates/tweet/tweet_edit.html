@@ -7,45 +7,31 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container timeline-container">
-        <div class="row">
-            <!-- 왼쪽 컬럼 -->
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ user.username }}</h5>
-                        <p class="card-text"> {{ user.nickname }}</p>
-                        <p class="card-text"> {{ user.speech }}</p>
-                    </div>
-                </div>
-            </div>
-            <!-- 오른 쪽 컬럼-->
-            <div class="col-md-7">
-                <div class="row">
-                    <div class="col-md-12 mb-2">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="media">
-                                    {% if tweet.author == user %}
-                                        <div class="media-body">
-                                            <form action="/tweet/update/{{ tweet.id }}" method="post">
-                                                {% csrf_token %}
-                                                <div class="form-group mb-2">
-                                                    <textarea class="form-control" style="resize: none" name='my-content'
-                                                                id="my-content"></textarea>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary" style="float:right;">수정하기
-                                                </button>
-                                            </form>
-                                            </p>
-                                        </div>
-                                    {% endif %}
-                                </div>
+
+    <div class="row">
+        <div class="col-md-12 mb-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="media">
+                        {% if tweet.author == user %}
+                            <div class="media-body">
+                                <form action="/tweet/update/{{ tweet.id }}" method="post">
+                                    {% csrf_token %}
+                                    <div class="form-group mb-2">
+                                                    <textarea class="form-control" style="resize: none"
+                                                              name='my-content'
+                                                              id="my-content"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-info" style="float:right;">수정하기
+                                    </button>
+                                </form>
+                                </p>
                             </div>
-                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
 {% endblock %}

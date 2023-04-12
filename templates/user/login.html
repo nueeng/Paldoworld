@@ -10,7 +10,7 @@
     <img class="abs" src="{% static "img/lobby.png" %}">
     <div class="login_css">
         <div class="wrap">
-            <h2 class="title"> 로그인</h2>
+            <h2 class="title center_form"> 로그인</h2>
             <form class="form-area" method="post" action="/login/">
                 {% csrf_token %}
                 <div class="form-group mt-2 mb-2">
@@ -22,7 +22,7 @@
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <hr>
-                <div class="center_login">
+                <div class="right_form">
                     <button type="submit" class="btn btn-outline-info">로그인</button>
                     <a href="/sign-up" class="btn btn-outline-secondary">회원가입</a>
                 </div>
