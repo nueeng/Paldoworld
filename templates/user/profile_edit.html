@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    프로필 수정
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="wrap">
+            <h2 class="title-center"> 프로필 수정 </h2>
+            <form class="form-area" method="post" action="/profile_edit/">
+                {% csrf_token %}
+                 <div class="form-group mt-2 mb-2">
+                    <label for="nickname">nickname</label>
+                    <input type="text" class="form-control" id="nickname" name="nickname">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                    <label for="speech">speech</label>
+                    <input type="text" class="form-control" id="speech" name="speech">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                    <label for="site_address">site_address</label>
+                    <input type="text" class="form-control" id="site_address" name="site_address">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                    <label for="tmi">tmi</label>
+                    <input type="text" class="form-control" id="tmi" name="tmi">
+                </div>
+                <hr>
+                <div style="float: right">
+                    <button type="submit" class="btn btn-outline-info">수정</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

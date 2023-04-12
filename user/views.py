@@ -64,11 +64,23 @@ def logout(request):
 
 
 @login_required
+def profile_edit_view(request):
+    if request.method == 'POST':
+        user = request.user
+        user.nickname = request.POST.get('nickname',None)
+        user.speech = request.POST.get('speech',None)
+        user.site_address = request.POST.get('site_address',None)
+        user.tmi = request.POST.get('tmi',None)
+        user.save()
+        return redirect('/')
+    else:
+        return render(request, 'user/profile_edit.html')
+
 def userlist_view(request): # 유저리스트 띄우기 함수 / 이런식으로 할지 아니면 팔로우하고 있는 유저만 띄울지
     if request.method == 'GET':
         user_list = UserModel.objects.all().exclude(username=request.user.username)
         return render(request, 'user/follow.html', {'user_list':user_list})
-    
+
 
 @login_required
 def follow_view(request, id):
@@ -79,3 +91,4 @@ def follow_view(request, id):
     else:
         click_user.follower.add(request.user)
     return redirect('/follow')
+
