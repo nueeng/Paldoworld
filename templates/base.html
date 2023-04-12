@@ -14,33 +14,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
             crossorigin="anonymous"></script>
-    <style>
-        .title-center {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .wrap {
-            width: 400px;
-            margin: 0 auto;
-        }
-
-        .form-area {
-            margin-top: 25px;
-        }
-
-        .timeline-container {
-            margin-top: 25px
-        }
-
-        .rrow {
-            display: flex;
-        }
-
-        .rrow p {
-            color: #0dd4f6;
-        }
-    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" style="z-index:2">
@@ -84,8 +57,10 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ user.username }}</h5>
-                    <p class="card-text"> {{ user.nickname }}</p>
-                    <p class="card-text"> {{ user.speech }}</p>
+                    <p class="card-text"> {{ user.nickname }}님 환영합니다</p>
+                    <p class="card-text">한마디 : {{ user.speech }}</p>
+                    <p class="card-text">Blog, Github은 {{ user.site_address }}</p>
+                    <p class="card-text">tmi : {{ user.tmi }}</p>
 
                 </div>
             </div>
@@ -97,7 +72,7 @@
         </div>
         <div class="col-md-2 d-flex flex-column grid gap-3">
             <a href="/main" type="button" class="btn btn-outline-info">메인</a>
-            <a href="/tweet" type="button" class="btn btn-outline-info">게시판</a>
+            <a href="/tweet" type="button" class="btn btn-outline-info">다이어리</a>
             <a href="/guestbook" type="button" class="btn btn-outline-info">방명록</a>
             <a href="#" type="button" class="btn btn-outline-info">일촌</a>
             <a href="#" type="button" class="btn btn-outline-info">추가할것</a>

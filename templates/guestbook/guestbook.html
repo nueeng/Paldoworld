@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    {{ owner_username }}님의 방명록
+{% endblock %}
+{% block name %}
+    {{ owner_username }}님의 방명록
+{% endblock %}
 {% block content %}
   <h2>{{ owner_username }}님의 방명록</h2>
   {% if user.is_authenticated %}
