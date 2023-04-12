@@ -1,10 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-</body>
-</html>
+{% block content %}
+  <h2>{{ owner_username }}님의 방명록</h2>
+  {% if user.is_authenticated %}
+    <form method="POST" action="{% url 'guestbook' %}">
+      {% csrf_token %}
+      <div>
+        <label for="my-content">내용</label>
+        <textarea id="my-content" name="my-content" required></textarea>
+      </div>
+      <button type="submit">작성</button>
+    </form>
+
+    <hr>
+
+    {% for gb in guestbook %}
+      <div>
+        <p>{{ gb.content }}</p>
+        <small>{{ gb.created_at }}</small>
+        {% if user == gb.author %}
+            <div>
+                <a href="{% url 'edit-guestbook' gb.id %}">수정</a>
+                <a href="{% url 'delete-guestbook' gb.id %}">삭제</a>
+            </div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>로그인 후 방명록을 작성하실 수 있습니다.</p>
+    <a href="{% url 'login' %}">로그인</a>
+  {% endif %}
+{% endblock %}
