@@ -62,3 +62,17 @@ def login_view(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+
+@login_required
+def profile_edit_view(request):
+    if request.method == 'POST':
+        user = request.user
+        user.nickname = request.POST.get('nickname',None)
+        user.speech = request.POST.get('speech',None)
+        user.site_address = request.POST.get('site_address',None)
+        user.tmi = request.POST.get('tmi',None)
+        user.save()
+        return redirect('/')
+    else:
+        return render(request, 'user/profile_edit.html')
