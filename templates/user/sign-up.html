@@ -8,9 +8,9 @@
 {% endblock %}
 {% block content %}
     <img class="abs" src="{% static "img/lobby.png" %}">
-    <div class="container login_css">
+    <div class="signup_css">
         <div class="wrap">
-            <h2 class="title-center"> 회원가입 </h2>
+            <h2 class="title-center margin_top_zero"> 회원가입 </h2>
             <form class="form-area" method="post" action="/sign-up/">
                 {% csrf_token %}
                 <div class="form-group mt-2 mb-2">
@@ -42,7 +42,7 @@
                     <input type="text" class="form-control" id="tmi" name="tmi">
                 </div>
                 <hr>
-                <div style="float: right">
+                <div class="right_form">
                     <button type="submit" class="btn btn-outline-info">회원가입</button> {# form 안에있으면 form을 실행시켜주는 역할을한다. #}
                     <a href="/login" class="btn btn-outline-secondary">로그인</a>
                 </div>

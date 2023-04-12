@@ -32,14 +32,18 @@
         .timeline-container {
             margin-top: 25px
         }
+
         .rrow {
-            display:flex;
+            display: flex;
         }
-        .rrow p {color:#0dd4f6;}
+
+        .rrow p {
+            color: #0dd4f6;
+        }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="z-index:2">
     <div class="container">
         <a class="navbar-brand" href="/main">8&#186;월드</a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -74,9 +78,31 @@
         </form>
     </div>
 </nav>
-{% block content %}
+<div class="container timeline-container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ user.username }}</h5>
+                    <p class="card-text"> {{ user.nickname }}</p>
+                    <p class="card-text"> {{ user.speech }}</p>
 
-{% endblock %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-7">
+            {% block content %}
 
+            {% endblock %}
+        </div>
+        <div class="col-md-2 d-flex flex-column grid gap-3">
+            <a href="/main" type="button" class="btn btn-outline-info">메인</a>
+            <a href="/tweet" type="button" class="btn btn-outline-info">게시판</a>
+            <a href="/guestbook" type="button" class="btn btn-outline-info">방명록</a>
+            <a href="#" type="button" class="btn btn-outline-info">일촌</a>
+            <a href="#" type="button" class="btn btn-outline-info">추가할것</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>
