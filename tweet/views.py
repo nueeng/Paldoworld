@@ -12,6 +12,14 @@ def home(request):  # 유저 검증 후 게시글로 보낼지, 로그인으로 
         return redirect('/tweet')
     else:
         return redirect('/login')
+    
+def main(request):
+    if request.method == 'GET':
+        user = request.user.is_authenticated
+        if user:
+            return render(request, 'index.html')
+        else:
+            return redirect('/login')
 
 
 def tweet(request):  # 게시글 작성 함수

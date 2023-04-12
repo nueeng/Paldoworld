@@ -2,7 +2,10 @@
 
 {% extends 'base.html' %}
 {% block title %}
-    메인페이지
+    담벼락
+{% endblock %}
+{% block name %}
+    담벼락
 {% endblock %}
 
 {% block content %}
@@ -28,7 +31,7 @@
                             <div class="card-body">
                                 <div class="media">
                                     <div class="media-body">
-                                        <h5 class="mt-0">나의 이야기를 적어주세요</h5>
+                                        <h5 class="mt-0">담벼락</h5>
                                         <p>
                                         <form action="/tweet/" method="post">
                                             {% csrf_token %}
@@ -36,7 +39,7 @@
                                                 <textarea class="form-control" style="resize: none" name='my-content'
                                                           id="my-content"></textarea>
                                             </div>
-                                            <button type="submit" class="btn btn-primary" style="float:right;">작성하기
+                                            <button type="submit" class="btn btn-info" style="float:right;">작성하기
                                             </button>
                                         </form>
                                         </p>
@@ -56,34 +59,24 @@
                                     {% if tw.author == user %}
                                         <div style="text-align: right">
                                             <a href="/tweet/delete/{{ tw.id }}">
-                                                <span class="badge rounded-pill bg-danger">삭제</span>
+                                                <span class="btn btn-outline-info bg-danger">삭제</span>
                                             </a>
                                         </div>
                                     {% endif %}
-                                    <div style="text-align: right">
+                                    <div style="text-align: right; margin-top:10px">
                                         <a href="/tweet/{{ tw.id }}">
-                                            <span class="badge rounded-pill bg-success">보기</span>
+                                            <span class="btn btn-outline-info">보기</span>
                                         </a>
                                     </div>
+
                                     <div class="media">
                                         <div class="media-body">
                                             <h5 class="mt-0">{{ tw.content }}</h5>
                                         </div>
-                                        {% if tw.author == user %}
-                                            <div style="text-align: right">
-                                                <a href="/tweet/delete/{{ tw.id }}">
-                                                    <span class="badge rounded-pill bg-danger">삭제</span>
-                                                </a>
-                                            </div>
-                                        {% endif %}
-                                        <div style="text-align: right">
-                                            <a href="/tweet/{{ tw.id }}">
-                                                <span class="badge rounded-pill bg-success">보기</span>
-                                            </a>
-                                        </div>
                                         <div style="text-align: right">
                                             <span style="font-size: small">{{ tw.author.username }}-{{ tw.created_at|timesince }} 전</span>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -91,7 +84,13 @@
                     {% endfor %}
                 </div>
             </div>
-            <div class="col-md-2"></div>
+            <div class="col-md-2 d-flex flex-column grid gap-3">
+                <a href="/main" type="button" class="btn btn-outline-info">메인</a>
+                <a href="/tweet" type="button" class="btn btn-outline-info">게시판</a>
+                <a href="#" type="button" class="btn btn-outline-info">방명록</a>
+                <a href="#" type="button" class="btn btn-outline-info">추가할것</a>
+                <a href="#" type="button" class="btn btn-outline-info">추가할것</a>
+            </div>
         </div>
     </div>
 {% endblock %}

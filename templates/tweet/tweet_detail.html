@@ -1,5 +1,3 @@
-<!-- templates/tweet/tweet_detail.html -->
-
 {% extends 'base.html' %}
 
 {% block title %}
@@ -57,7 +55,7 @@
                 </form>
                 <hr>
                 <!-- 반복문이 들어 갈 곳 -->
-								{% for cm in comment %}
+                {% for cm in comment %}
                     <div class="row">
                         <div class="col-md-12">
                             <div class="media">
@@ -69,7 +67,7 @@
                                 {% if cm.author == user %}
                                     <div style="float: right">
                                         <a href="/tweet/comment/delete/{{ cm.id }}">
-                                            <span class="badge bg-danger">삭제</span>
+                                            <span class="btn bg-danger">삭제</span>
                                         </a>
                                     </div>
                                 {% endif %}
