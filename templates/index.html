@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
     Home
 {% endblock %}
@@ -23,7 +23,8 @@
             <div class="col-md-7">
                 <div style="text-align:center;">
                     <h2>추억의 8&#186;월드 입니다.</h2>
-                    <div>추가할것</div>
+                    <img src="{% static "img/first.png" %}" style="width: 100px; height: 100px">
+                    <div class="test">추가할것</div>
                     <div>추가할장소로</div>
                     <div>써야겠습니다.</div>
                     <div>더더더더</div>
@@ -33,8 +34,9 @@
                 <a href="/main" type="button" class="btn btn-outline-info">메인</a>
                 <a href="/tweet" type="button" class="btn btn-outline-info">게시판</a>
                 <a href="#" type="button" class="btn btn-outline-info">방명록</a>
+                <a href="#" type="button" class="btn btn-outline-info">일촌</a>
                 <a href="#" type="button" class="btn btn-outline-info">추가할것</a>
-                <a href="#" type="button" class="btn btn-outline-info">추가할것</a>
+
             </div>
         </div>
     </div>

@@ -1,12 +1,16 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
     로그인
 {% endblock %}
+{% block name %}
+    로그인
+{% endblock %}
 {% block content %}
-    <div class="container">
+    <img class="abs" src="{% static "img/lobby.png" %}">
+    <div class="login_css">
         <div class="wrap">
-            <h2 class="title-center"> 로그인</h2>
+            <h2 class="title"> 로그인</h2>
             <form class="form-area" method="post" action="/login/">
                 {% csrf_token %}
                 <div class="form-group mt-2 mb-2">
@@ -18,11 +22,11 @@
                     <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <hr>
-                <div style="float: right">
+                <div class="center_login">
                     <button type="submit" class="btn btn-outline-info">로그인</button>
-                    <a href="/sign-up" class="btn btn-outline-secondary">회원가입페이지로</a>
+                    <a href="/sign-up" class="btn btn-outline-secondary">회원가입</a>
                 </div>
             </form>
-        </div>
+        </div>{# e:wrap #}
     </div>
 {% endblock %}

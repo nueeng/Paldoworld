@@ -25,7 +25,7 @@ def tweet(request):
         user=request.user.is_authenticated
         if user:
             all_tweet = TweetModel.objects.all().order_by('-created_at')
-            return render(request, 'tweet/home.html', {'tweet':all_tweet})
+            return render(request, 'tweet/tweet.html', {'tweet':all_tweet}) #tweet.html로 해야 우측메뉴나옵니다. home.html로하면 안나와요~!
         else:
             return redirect('/login')
 
@@ -36,7 +36,7 @@ def tweet(request):
         if content == "": # 빈 칸일 시 if문 처리
             all_tweet = TweetModel.objects.all().order_by('-created_at')
             return HttpResponse("게시글이 빈칸 입니다.") # 이거 수정할 때 redirect로 할지 render로할지 정해서 게시글, 댓글 다 렌더 되도록해야함!
-            return render(request, 'tweet/home.html') # 에러메세지 처리 뒤에
+            # return render(request, 'tweet/home.html') # 에러메세지 처리 뒤에
         else:
             my_tweet = TweetModel.objects.create(author=user, content=content)
             my_tweet.save()
@@ -70,7 +70,7 @@ def update_tweet(request, id):
 
     if new_tweet.content == "":
         return HttpResponse("게시글이 빈칸 입니다.")
-        return render(request,'tweet/tweet_detail.html') # 에러메세지 처리 뒤에
+        # return render(request,'tweet/tweet_detail.html') # 에러메세지 처리 뒤에
     else:
         new_tweet.save()
         return render(request,'tweet/tweet_detail.html',{'tweet':new_tweet,'comment':tweet_comment})
