@@ -21,8 +21,12 @@ def guestbook(request):
         my_guestbook.save()
         return redirect('/guestbook')
 
-@login_required # 방명록 수정
+
 def edit_guestbook(request, id):
+    # 로그인한 사용자인 경우에만 뷰 함수를 실행합니다.
+    if not request.user.is_authenticated:
+        raise PermissionDenied
+
     guestbook = get_object_or_404(GuestbookModel, id=id)
     if request.method == 'GET':
         return render(request, 'guestbook/edit_guestbook.html', {'guestbook': guestbook})
@@ -36,3 +40,9 @@ def delete_guestbook(request, id):
     my_guestbook = GuestbookModel.objects.get(id=id)
     my_guestbook.delete()
     return redirect('/guestbook')
+
+def view_guestbook(request, username):
+    owner = get_object_or_404(User, username=username)
+    guestbook_entries = Guestbook.objects.filter(owner=owner)
+    context = {'owner_username': owner.username, 'guestbook_entries': guestbook_entries}
+    return render(request, 'guestbook/view_guestbook.html', context)
