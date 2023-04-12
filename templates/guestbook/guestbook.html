@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    {{ owner_username }}님의 방명록
+{% endblock %}
+{% block name %}
+    {{ owner_username }}님의 방명록
+{% endblock %}
+
 {% block content %}
   <h2>{{ owner_username }}님의 방명록</h2>
   {% if user.is_authenticated %}
@@ -14,15 +21,14 @@
 
     <hr>
 
-    {% for gb in guestbook %}
-      <div>
-        <p>{{ gb.content }}</p>
-        <small>{{ gb.created_at }}</small>
-        {% if user == gb.author %}
-            <div>
-                <a href="{% url 'edit-guestbook' gb.id %}">수정</a>
-                <a href="{% url 'delete-guestbook' gb.id %}">삭제</a>
-            </div>
+    {% for entry in guestbook %}
+      <div class="entry">
+        <div class="author">{{ entry.author_nickname }}</div>
+        <div class="content">{{ entry.content }}</div>
+        <div class="created_at">{{ entry.created_at }}</div>
+        {% if entry.author == request.user %}
+          <a href="{% url 'edit' entry.id %}">Edit</a>
+          <a href="{% url 'delete' entry.id %}">Delete</a>
         {% endif %}
       </div>
     {% endfor %}
