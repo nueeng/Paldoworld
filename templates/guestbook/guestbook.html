@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    {{ owner_username }}님의 방명록
+{% endblock %}
 {% block name %}
-    일촌
+    {{ owner_username }}님의 방명록
 {% endblock %}
 
 {% block content %}

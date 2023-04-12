@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" charset="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>8&#186;월드 | {% block title %}{% endblock %}</title>
+    <title>8&#186;월드 | 로그인</title>
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/reset.css' %}">
     <!-- Bootstrap CSS -->
@@ -15,53 +15,64 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
             crossorigin="anonymous"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-    <style>
-        .title-center {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .wrap {
-            width: 400px;
-            margin: 0 auto;
-        }
-
-        .form-area {
-            margin-top: 25px;
-        }
-
-        .timeline-container {
-            margin-top: 25px
-        }
-
-        .rrow {
-            display: flex;
-        }
-
-        .rrow p {
-            color: #0dd4f6;
-        }
-    </style>
-    <img class="abs" src="{% static "img/lobby.png" %}">
-    <div class="login_css">
-        <div class="wrap">
-            <h2 class="title center_form"> 로그인</h2>
-            <form class="form-area" method="post" action="/login/">
-                {% csrf_token %}
-                <div class="form-group mt-2 mb-2">
-                    <label for="username">이름</label>
-                    <input type="text" class="form-control" id="username" name="username">
-                </div>
-                <div class="form-group mt-2 mb-2">
-                    <label for="password">비밀번호</label>
-                    <input type="password" class="form-control" id="password" name="password">
-                </div>
-                <hr>
-                <div class="right_form">
-                    <button type="submit" class="btn btn-outline-info">로그인</button>
-                    <a href="/sign-up" class="btn btn-outline-secondary">회원가입</a>
-                </div>
-            </form>
-        </div>{# e:wrap #}
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="z-index:2">
+    <div class="container">
+        <a class="navbar-brand" href="/main">8&#186;월드</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#"> 로그인 <span class="sr-only"></span></a>
+                </li>
+            </ul>
+        </div>
+        <form class="form-inline my-2 my-lg-0">
+            {% if not user.is_authenticated %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/login"> 로그인 <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/sign-up"> 회원가입 <span class="sr-only"></span></a>
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item disabled">
+                        <span class="nav-link">
+                            <h4>{{ user.username }} 님 어서오세요.</h4>
+                        </span>
+                    </li>
+                    <li class="nav-item active">
+                        <h4><a class="nav-link" href="/logout"> 로그아웃</a></h4>
+                    </li>
+                </ul>
+            {% endif %}
+        </form>
     </div>
+</nav>
+<img class="abs" src="{% static "img/lobby.png" %}">
+<div class="login_css">
+    <div class="wrap">
+        <h2 class="title center_form"> 로그인</h2>
+        <form class="form-area" method="post" action="/login/">
+            {% csrf_token %}
+            <div class="form-group mt-2 mb-2">
+                <label for="username">이름</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="form-group mt-2 mb-2">
+                <label for="password">비밀번호</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <hr>
+            <div class="right_form">
+                <button type="submit" class="btn btn-outline-info">로그인</button>
+                <a href="/sign-up" class="btn btn-outline-secondary">회원가입</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

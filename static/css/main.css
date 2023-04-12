@@ -14,12 +14,12 @@
 .login_css {
     width: 500px;
     height: 500px;
-    position: relative;
+    position: absolute;
     z-index: 2;
     border-radius: 50%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 50%);
+    transform: translate(-50%, -50%);
     /*border:2px solid #000;*/
     background-color: #fff;
     /*background-color: transparent;*/
@@ -45,18 +45,40 @@
 .signup_css {
     width: 800px;
     height: 800px;
-    position: relative;
+    position: absolute;
     z-index: 2;
     border-radius: 50%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 25%);
+    transform: translate(-50%, -50%);
     /*border:2px solid #000;*/
     background-color: #fff;
 }
 
 .margin_top_zero {
     margin-top: 0 !important;
+}
+
+
+.title-center {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.form-area {
+    margin-top: 25px;
+}
+
+.timeline-container {
+    margin-top: 25px
+}
+
+.rrow {
+    display: flex;
+}
+
+.rrow p {
+    color: #0dd4f6;
 }
 
 main {}
