@@ -1,43 +1,16 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block title %}
     Home
 {% endblock %}
+
 {% block name %}
     Home
 {% endblock %}
 
 {% block content %}
-        <div class="container timeline-container">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ user.username }}</h5>
-                        <p class="card-text"> {{ user.nickname }}</p>
-                        <p class="card-text"> {{ user.speech }}</p>
 
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-7">
-                <div style="text-align:center;">
-                    <h2>추억의 8&#186;월드 입니다.</h2>
-                    <img src="{% static "img/first.png" %}" style="width: 100px; height: 100px">
-                    <div class="test">추가할것</div>
-                    <div>추가할장소로</div>
-                    <div>써야겠습니다.</div>
-                    <div>더더더더</div>
-                </div>
-            </div>
-            <div class="col-md-2 d-flex flex-column grid gap-3">
-                <a href="/main" type="button" class="btn btn-outline-info">메인</a>
-                <a href="/tweet" type="button" class="btn btn-outline-info">게시판</a>
-                <a href="/guestbook" type="button" class="btn btn-outline-info">방명록</a>
-                <a href="#" type="button" class="btn btn-outline-info">일촌</a>
-                <a href="#" type="button" class="btn btn-outline-info">추가할것</a>
+<h1>What is Lorem Ipsum?</h1>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
-            </div>
-        </div>
-    </div>
 {% endblock %}

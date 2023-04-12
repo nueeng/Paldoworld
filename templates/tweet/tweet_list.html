@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    게시판
+{% endblock %}
+
+{% block name %}
+    게시판
+{% endblock %}
+
+{% block content %}
+    <!-- 작성 된 글이 나오는 곳 -->
+    <div class="row">
+        <div class="d-grid gap-2">
+            <a href="/tweet/" class="btn btn-primary btn-lg" type="button" style="margin-bottom: 15px;">게시글 작성하기</a>
+        </div>
+        {% for tw in tweet %}
+            <div class="col-md-12 mb-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="media-body">
+                            <h5 class="mt-0">{{ tw.content }}</h5>
+                            <h6 class="mt-0">{{ tw.author.username }}</h6>
+                        </div>
+                        <div style="text-align: right; margin-top:10px">
+                            <a href="/tweet/{{ tw.id }}">
+                                <span class="btn btn-outline-info">보기</span>
+                            </a>
+                        </div>
+                        {% if tw.author == user %}
+                            <div style="text-align: right">
+                                <a href="/tweet/delete/{{ tw.id }}">
+                                    <span class="btn btn-outline-info bg-danger">삭제</span>
+                                </a>
+                            </div>
+                        {% endif %}
+                        <div class="media">
+                            <div style="text-align: right">
+                                <span style="font-size: small">{{ tw.author.username }}-{{ tw.created_at|timesince }} 전</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

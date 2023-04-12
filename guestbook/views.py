@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from .models import GuestbookModel, UserModel
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import GuestbookModel
@@ -37,6 +38,7 @@ def delete_guestbook(request, id):
     my_guestbook = get_object_or_404(GuestbookModel, id=id, author=request.user)
     my_guestbook.delete()
     return redirect('guestbook')
+
 
 @login_required
 def view_guestbook(request, username):
