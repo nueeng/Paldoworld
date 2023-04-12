@@ -3,35 +3,17 @@ from .models import TweetModel, TweetComment
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 
-# Create your views here.
+
+def main(request): # 메인페이지 렌더 함수 main_view로 변경 생각중
+    return render(request, 'index.html')
 
 
-def tweet(request):  # 유저 검증 후 게시글로 보낼지, 로그인으로 보낼지 근데 이거 비로그인도 게시글 볼 수 있게 해야한다고 합니다
-    user = request.user.is_authenticated
-    if user:
-        return redirect('/tweet')
-    else:
-        return redirect('/login')
-    
-def main(request):
-    if request.method == 'GET':
-        user = request.user.is_authenticated
-        if user:
-            return render(request, 'index.html')
-        else:
-            return redirect('/login')
+def tweet(request):  # 게시글
+    if request.method == 'GET': # GET 렌더 함수
+        all_tweet = TweetModel.objects.all().order_by('-created_at')
+        return render(request, 'tweet/tweet.html', {'tweet': all_tweet})
 
-
-def tweet(request):  # 게시글 작성 함수
-    if request.method == 'GET':
-        user = request.user.is_authenticated
-        if user:
-            all_tweet = TweetModel.objects.all().order_by('-created_at')
-            return render(request, 'tweet/tweet.html', {'tweet': all_tweet})
-        else:
-            return redirect('/login')
-
-    elif request.method == 'POST':
+    elif request.method == 'POST': # POST 게시글 작성
         user = request.user
         content = request.POST.get('my-content', '')
 
@@ -46,19 +28,17 @@ def tweet(request):  # 게시글 작성 함수
             return redirect('/tweet')
 
 
+def detail_tweet(request, id):  # 게시글 상세페이지 렌더 함수
+    my_tweet = TweetModel.objects.get(id=id)
+    tweet_comment = TweetComment.objects.filter(tweet_id=id).order_by('-created_at')
+    return render(request, 'tweet/tweet_detail.html', {'tweet': my_tweet, 'comment': tweet_comment})
+
+
 @login_required
 def delete_tweet(request, id): # 게시글 삭제함수
     my_tweet = TweetModel.objects.get(id=id)
     my_tweet.delete()
     return redirect('/tweet')
-
-
-@login_required
-def detail_tweet(request, id):  # 게시글 상세페이지 렌더링 함수
-    my_tweet = TweetModel.objects.get(id=id)
-    tweet_comment = TweetComment.objects.filter(
-        tweet_id=id).order_by('-created_at')
-    return render(request, 'tweet/tweet_detail.html', {'tweet': my_tweet, 'comment': tweet_comment})
 
 
 @login_required  # 게시글 수정 페이지로 이동하는 함수
@@ -85,7 +65,7 @@ def update_tweet(request, id):
         return render(request, 'tweet/tweet_detail.html', {'tweet': new_tweet, 'comment': tweet_comment})
 
 
-@login_required  # 댓글 작성
+@login_required  # 댓글 작성 함수
 def write_comment(request, id):
     if request.method == 'POST':
         comment = request.POST.get("comment", "")
@@ -100,7 +80,7 @@ def write_comment(request, id):
         return redirect('/tweet/'+str(id))
 
 
-@login_required  # 댓글 삭제
+@login_required  # 댓글 삭제 함수
 def delete_comment(request, id):
     comment = TweetComment.objects.get(id=id)
     current_tweet = comment.tweet.id
