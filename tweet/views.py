@@ -6,7 +6,7 @@ from django.http import HttpResponse
 # Create your views here.
 
 
-def home(request):  # 유저 검증 후 게시글로 보낼지, 로그인으로 보낼지 근데 이거 비로그인도 게시글 볼 수 있게 해야한다고 합니다
+def tweet(request):  # 유저 검증 후 게시글로 보낼지, 로그인으로 보낼지 근데 이거 비로그인도 게시글 볼 수 있게 해야한다고 합니다
     user = request.user.is_authenticated
     if user:
         return redirect('/tweet')
@@ -27,7 +27,7 @@ def tweet(request):  # 게시글 작성 함수
         user = request.user.is_authenticated
         if user:
             all_tweet = TweetModel.objects.all().order_by('-created_at')
-            return render(request, 'tweet/home.html', {'tweet': all_tweet})
+            return render(request, 'tweet/tweet.html', {'tweet': all_tweet})
         else:
             return redirect('/login')
 
@@ -39,7 +39,7 @@ def tweet(request):  # 게시글 작성 함수
             all_tweet = TweetModel.objects.all().order_by('-created_at')
             # 이거 수정할 때 redirect로 할지 render로할지 정해서 게시글, 댓글 다 렌더 되도록해야함!
             return HttpResponse("게시글이 빈칸 입니다.")
-            return render(request, 'tweet/home.html')  # 에러메세지 처리 뒤에
+            return render(request, 'tweet/tweet.html')  # 에러메세지 처리 뒤에
         else:
             my_tweet = TweetModel.objects.create(author=user, content=content)
             my_tweet.save()
