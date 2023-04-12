@@ -6,4 +6,5 @@ urlpatterns = [
     path('',include('user.urls')),
     path('',include('tweet.urls')),
     path('',include('guestbook.urls')),
+    
 ]
