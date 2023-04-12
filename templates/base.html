@@ -80,16 +80,20 @@
 </nav>
 <div class="container timeline-container">
     <div class="row">
+        {% if user.is_authenticated %}
         <div class="col-md-3">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ user.username }}</h5>
                     <p class="card-text"> {{ user.nickname }}</p>
                     <p class="card-text"> {{ user.speech }}</p>
-
                 </div>
             </div>
         </div>
+        {% else %}
+        <div class="col-md-3">
+        </div>
+        {% endif %}
         <div class="col-md-7">
             {% block content %}
 
@@ -97,7 +101,7 @@
         </div>
         <div class="col-md-2 d-flex flex-column grid gap-3">
             <a href="/main" type="button" class="btn btn-outline-info">메인</a>
-            <a href="/tweet" type="button" class="btn btn-outline-info">게시판</a>
+            <a href="/tweet_list" type="button" class="btn btn-outline-info">게시판</a>
             <a href="/guestbook" type="button" class="btn btn-outline-info">방명록</a>
             <a href="#" type="button" class="btn btn-outline-info">일촌</a>
             <a href="#" type="button" class="btn btn-outline-info">추가할것</a>

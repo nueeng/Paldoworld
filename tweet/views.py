@@ -25,7 +25,12 @@ def tweet(request):  # 게시글
         else:
             my_tweet = TweetModel.objects.create(author=user, content=content)
             my_tweet.save()
-            return redirect('/tweet')
+            return redirect('/tweet_list')
+        
+def tweet_list(request):
+    if request.method == 'GET': # GET 렌더 함수
+        all_tweet = TweetModel.objects.all().order_by('-created_at')
+        return render(request, 'tweet/tweet_list.html', {'tweet': all_tweet})
 
 
 def detail_tweet(request, id):  # 게시글 상세페이지 렌더 함수
