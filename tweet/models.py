@@ -8,6 +8,7 @@ class TweetModel(models.Model):
         db_table = "tweet"
 
     author = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+    title = models.CharField(max_length=256)
     content = models.CharField(max_length=256)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

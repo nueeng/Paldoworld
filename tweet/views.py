@@ -15,15 +15,16 @@ def tweet(request):  # 게시글
 
     elif request.method == 'POST': # POST 게시글 작성
         user = request.user
+        title = request.POST.get('title', '')
         content = request.POST.get('my-content', '')
 
-        if content == "":  # 빈 칸일 시 if문 처리
+        if content == "" or title == "":  # 빈 칸일 시 if문 처리
             all_tweet = TweetModel.objects.all().order_by('-created_at')
             # 이거 수정할 때 redirect로 할지 render로할지 정해서 게시글, 댓글 다 렌더 되도록해야함!
             return HttpResponse("게시글이 빈칸 입니다.")
             return render(request, 'tweet/tweet.html')  # 에러메세지 처리 뒤에
         else:
-            my_tweet = TweetModel.objects.create(author=user, content=content)
+            my_tweet = TweetModel.objects.create(author=user, title=title, content=content)
             my_tweet.save()
             return redirect('/tweet_list')
         
@@ -60,9 +61,10 @@ def update_tweet(request, id):
         tweet_id=id).order_by('-created_at')
 
     new_tweet = TweetModel.objects.get(id=id)
+    new_tweet.title = request.POST.get("title", "")
     new_tweet.content = request.POST.get("my-content", "")
 
-    if new_tweet.content == "":
+    if new_tweet.content == "" or new_tweet.title == "":
         return HttpResponse("게시글이 빈칸 입니다.")
         return render(request, 'tweet/tweet_detail.html')  # 에러메세지 처리 뒤에
     else:
