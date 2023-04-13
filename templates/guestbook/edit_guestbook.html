@@ -2,7 +2,7 @@
 
 {% block content %}
   <h2>방명록 수정하기</h2>
-  <form method="POST" action="{% url 'edit-guestbook' guestbook.id %}">
+  <form method="POST" action="{% url 'edit' guestbook.id %}">
     {% csrf_token %}
     <div>
       <label for="my-content">내용</label>
