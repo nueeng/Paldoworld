@@ -52,7 +52,7 @@
                         <span> - {{ cm.created_at | timesince }} 전</span>
                     </div>
                     {% if cm.author == user %}
-                        <div style="float: right">
+                        <div style="float: right" class="detail_delete">
                             <a href="/tweet/comment/delete/{{ cm.id }}">
                                 <span class="btn bg-danger">삭제</span>
                             </a>
