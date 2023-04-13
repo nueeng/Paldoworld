@@ -21,19 +21,20 @@ def sign_up_view(request):  # 회원가입 함수
         speech = request.POST.get('speech', '')
         site_address = request.POST.get('site_address', '')
         tmi = request.POST.get('tmi', '')
+        birthday = request.POST.get('birthday', '')
         image = request.FILES.get('image', '')
 
         if password != password2:
             return render(request, 'user/sign-up.html', {'error':'비밀번호를 확인해 주세요'})
         else:
-            if username == '' or password == '' or nickname == '' or speech == '' or site_address == '' or tmi == '':
+            if username == '' or password == '' or nickname == '' or speech == '' or site_address == '' or tmi == '' or birthday == '':
                 return render(request, 'user/sign-up.html', {'error':'모든 박스를 채워주세요!'})
 
             exist_user = get_user_model().objects.filter(username=username)
             if exist_user:
                 return render(request, 'user/sign-up.html',{'error':'사용자가 존재합니다.'})
             else:
-                UserModel.objects.create_user(username=username, password=password, speech=speech, nickname=nickname, site_address=site_address, tmi=tmi, image=image)
+                UserModel.objects.create_user(username=username, password=password, speech=speech, nickname=nickname, site_address=site_address, tmi=tmi, birthday=birthday, image=image)
                 return redirect('/login')
 
 
@@ -75,9 +76,10 @@ def profile_edit_view(request):
         user.speech = request.POST.get('speech','')
         user.site_address = request.POST.get('site_address','')
         user.tmi = request.POST.get('tmi','')
+        user.birthday = request.POST.get('birthday', '')
         user.image = request.FILES.get('image',None)
 
-        if user.nickname == '' or user.speech == '' or user.site_address == '' or user.tmi == '':
+        if user.nickname == '' or user.speech == '' or user.site_address == '' or user.tmi == '' or user.birthday == '':
             return render(request, 'user/profile_edit.html', {'error': '모든 박스를 채워주세요!'})
 
         user.save()
