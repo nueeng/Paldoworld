@@ -10,7 +10,7 @@
     <div class="container">
         <div class="wrap">
             <h2 class="title-center"> 프로필 수정 </h2>
-            <form class="form-area" method="post" action="/profile_edit/">
+            <form class="form-area" method="post" action="/profile_edit/" enctype="multipart/form-data">
                 {% csrf_token %}
                  <div class="form-group mt-2 mb-2">
                     <label for="nickname">닉네임</label>
@@ -27,6 +27,11 @@
                 <div class="form-group mt-2 mb-2">
                     <label for="tmi">tmi</label>
                     <input type="text" class="form-control" id="tmi" name="tmi" value="{{ request.user.tmi}}">
+                </div>
+                <br>
+                <div class="input-group mb-3">
+                    <label class="input-group-text" for="image">사진</label>
+                    <input type="file" class="form-control" id="image" name="image">
                 </div>
                 <hr>
                 <div style="float: right">

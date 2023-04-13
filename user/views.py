@@ -75,6 +75,7 @@ def profile_edit_view(request):
         user.speech = request.POST.get('speech',None)
         user.site_address = request.POST.get('site_address',None)
         user.tmi = request.POST.get('tmi',None)
+        user.image = request.FILES.get('image',None)
         user.save()
         return redirect('/')
     else:
@@ -96,4 +97,3 @@ def follow_view(request, id):
     else:
         click_user.follower.add(request.user)
     return redirect('/follow')
-
