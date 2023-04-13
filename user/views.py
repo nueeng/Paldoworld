@@ -25,8 +25,8 @@ def sign_up_view(request):  # 회원가입 함수
         if password != password2:
             return render(request, 'user/sign-up.html', {'error':'비밀번호를 확인해 주세요'})
         else:
-            if username == '' or password == '':
-                return render(request, 'user/sign-up.html', {'error':'아이디와 비밀번호는 필수 값입니다.'})
+            if username == '' or password == '' or nickname == '' or speech == '' or site_address == '' or tmi == '':
+                return render(request, 'user/sign-up.html', {'error':'모든 박스를 채워주세요!'})
 
             exist_user = get_user_model().objects.filter(username=username)
             if exist_user:
@@ -70,11 +70,15 @@ def logout(request):
 def profile_edit_view(request):
     if request.method == 'POST':
         user = request.user
-        user.nickname = request.POST.get('nickname',None)
-        user.speech = request.POST.get('speech',None)
-        user.site_address = request.POST.get('site_address',None)
-        user.tmi = request.POST.get('tmi',None)
+        user.nickname = request.POST.get('nickname','')
+        user.speech = request.POST.get('speech','')
+        user.site_address = request.POST.get('site_address','')
+        user.tmi = request.POST.get('tmi','')
         user.image = request.FILES.get('image',None)
+
+        if user.nickname == '' or user.speech == '' or user.site_address == '' or user.tmi == '':
+            return render(request, 'user/profile_edit.html', {'error': '모든 박스를 채워주세요!'})
+
         user.save()
         return redirect('/')
     else:
