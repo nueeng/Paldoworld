@@ -14,7 +14,7 @@
                     <div class="media">
                         {% if tweet.author == user %}
                             <div class="media-body">
-                                <form action="/tweet/" method="post">
+                                <form action="/tweet/update/{{ tweet.id }}" method="post">
                                     {% csrf_token %}
                                         <div class="mb-3">
                                             <label for="title" class="form-label">제목</label>

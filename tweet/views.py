@@ -60,16 +60,16 @@ def update_tweet(request, id):
     tweet_comment = TweetComment.objects.filter(
         tweet_id=id).order_by('-created_at')
 
-    new_tweet = TweetModel.objects.get(id=id)
-    new_tweet.title = request.POST.get("title", "")
-    new_tweet.content = request.POST.get("my-content", "")
+    update_tweet = TweetModel.objects.get(id=id)
+    update_tweet.title = request.POST.get("title", "")
+    update_tweet.content = request.POST.get("my-content", "")
 
-    if new_tweet.content == "" or new_tweet.title == "":
-        return HttpResponse("게시글이 빈칸 입니다.")
+    if update_tweet.content == "" or update_tweet.title == "":
+        return HttpResponse("다이어리를 작성해 주세요.")
         return render(request, 'tweet/tweet_detail.html')  # 에러메세지 처리 뒤에
     else:
-        new_tweet.save()
-        return render(request, 'tweet/tweet_detail.html', {'tweet': new_tweet, 'comment': tweet_comment})
+        update_tweet.save()
+        return render(request, 'tweet/tweet_detail.html', {'tweet': update_tweet, 'comment': tweet_comment})
 
 
 @login_required  # 댓글 작성 함수
