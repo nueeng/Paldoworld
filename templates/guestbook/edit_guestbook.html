@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
-
+{% block title %}
+    {{ owner_username }}님의 방명록 수정
+{% endblock %}
+{% block name %}
+    {{ owner_username }}님의 방명록 수정
+{% endblock %}
 {% block content %}
-  <h2>방명록 수정하기</h2>
-  <form method="POST" action="{% url 'edit' guestbook.id %}">
+
+  <h2>방명록 수정</h2>
+  <form method="POST" action="{% url 'edit-guestbook' guestbook.id %}">
     {% csrf_token %}
     <div>
       <label for="my-content">내용</label>

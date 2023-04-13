@@ -1,15 +1,16 @@
-let link_a = document.querySelectorAll('.link a')
+const link_a = document.querySelectorAll('.link a')
 let close = true
 console.log(link_a)
 
 link_a.forEach(function (t, i) {
-    t.addEventListener('click', function (e) {
-        e.preventDefault()
+    t.addEventListener('click', function () {
+        // e.preventDefault()
         close = true
-        for (const n of link_a) { n.classList.remove('active') }
-        //console.log('----')
+        for (const n of link_a) { n.classList.remove('active1') }
+        console.log('----')
         if (close == true) {
-            link_a[i].classList.add('active')
+            link_a[i].classList.add('active1')
+            console.log(link_a[i])
             close = false
         } else {
             close = true
