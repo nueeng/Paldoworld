@@ -4,7 +4,9 @@ from django.contrib.auth.decorators import login_required
 
 
 def main(request): # 메인페이지 렌더 함수 main_view로 변경 생각중
-    return render(request, 'index.html')
+    if request.method == 'GET':
+        all_tweet = TweetModel.objects.all().order_by('-created_at')
+        return render(request, 'index.html', {'tweet': all_tweet})
 
 
 def tweet(request):  # 게시글
