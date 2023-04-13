@@ -13,14 +13,20 @@ def guestbook(request):
         all_guestbook = GuestbookModel.objects.all().order_by('-created_at')
         return render(request, 'guestbook/guestbook.html', {'guestbook': all_guestbook, 'owner_username': request.user.username})
     elif request.method == 'POST':
+        # POST 요청에 대한 처리 부분은 그대로 둡니다.
         user = request.user
         my_guestbook = GuestbookModel()
         my_guestbook.author = user
         my_guestbook.author_nickname_id = user.id
         my_guestbook.content = request.POST.get('my-content', '')
-        my_guestbook.created_at = timezone.now()  # 유효한 값을 할당합니다.
+        my_guestbook.created_at = timezone.now()
         my_guestbook.save()
         return redirect('guestbook')
+    else:
+        # GET 요청에 대한 처리 부분입니다.
+        all_guestbook = GuestbookModel.objects.all().order_by('-created_at')
+        return render(request, 'guestbook/guestbook.html', {'guestbook': all_guestbook, 'owner_username': request.user.username})
+
 
 
 
@@ -49,9 +55,9 @@ def delete_guestbook(request, id):
 from django.http import Http404
 
 @login_required
-def view_guestbook(request, author):
+def view_guestbook(request, username):
     try:
-        owner = UserModel.objects.get(nickname=author)
+        owner = UserModel.objects.get(nickname=username)
     except UserModel.DoesNotExist:
         raise Http404()
 
