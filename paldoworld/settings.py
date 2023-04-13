@@ -124,6 +124,11 @@ AUTH_USER_MODEL = 'user.UserModel'
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/' # 이미지 업로드 위해 두줄 추가
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+LOGIN_URL = '/login'

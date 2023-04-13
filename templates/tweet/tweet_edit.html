@@ -3,7 +3,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    게시글 수정
+    다이어리 수정
 {% endblock %}
 
 {% block content %}
@@ -14,13 +14,17 @@
                     <div class="media">
                         {% if tweet.author == user %}
                             <div class="media-body">
-                                <form action="/tweet/update/{{ tweet.id }}" method="post">
+                                <form action="/tweet/" method="post">
                                     {% csrf_token %}
-                                    <div class="form-group mb-2">
-                                                    <textarea class="form-control" style="resize: none"
-                                                              name='my-content'
-                                                              id="my-content"></textarea>
-                                    </div>
+                                        <div class="mb-3">
+                                            <label for="title" class="form-label">제목</label>
+                                            <input type="title" class="form-control" id="title" name='title'>
+                                            <div id="titleHelp" class="form-text">다이어리를 꾸며주세요</div>
+                                        </div>
+                                        <div class="form-group mb-2">
+                                            <textarea class="form-control" style="resize: none" name='my-content'
+                                                        id="my-content"></textarea>
+                                        </div>
                                     <button type="submit" class="btn btn-info" style="float:right;">수정하기
                                     </button>
                                 </form>

@@ -8,12 +8,12 @@
 {% endblock %}
 
 {% block content %}
-  <h2>{{ owner_username }}님의 방명록</h2>
+  <h2>{{ request.user.nickname }}님의 방명록</h2>
   {% if user.is_authenticated %}
     <form method="POST" action="{% url 'guestbook' %}">
       {% csrf_token %}
       <div>
-        <label for="my-content">내용</label>
+        <label for="my-content"></label>
         <textarea id="my-content" name="my-content" required></textarea>
       </div>
       <button type="submit">작성</button>
@@ -27,8 +27,8 @@
         <div class="content">{{ entry.content }}</div>
         <div class="created_at">{{ entry.created_at }}</div>
         {% if entry.author == request.user %}
-          <a href="{% url 'edit' entry.id %}">Edit</a>
-          <a href="{% url 'delete' entry.id %}">Delete</a>
+          <a href="{% url 'edit' entry.id %}">수정</a>
+          <a href="{% url 'delete' entry.id %}">삭제</a>
         {% endif %}
       </div>
     {% endfor %}

@@ -42,7 +42,7 @@
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item disabled">
                         <span class="nav-link">
-                            <h4>{{ user.username }} 님 어서오세요.</h4>
+                            <h4>{{ user.nickname }} 님 어서오세요.</h4>
                         </span>
                     </li>
                     <li class="nav-item active">
@@ -62,13 +62,16 @@
                     <div class="today_total">today1000 total1000</div><!-- e:today_total -->
                     <div class="row">
                         {% if user.is_authenticated %}
+                            {% if user.image %}
+                            <img src="{{ user.image.url }}" class="img-thumbnail" alt="">
+                            {% endif %}
                             <div class="col-md-12">
                                 <div class="card b_radius">
                                     <div class="card-body">
                                         <h5 class="card-title">ID : {{ user.username }}</h5>
                                         <p class="card-text">Nickname : {{ user.nickname }}</p>
                                         <p class="card-text">한마디! {{ user.speech }}</p>
-                                        <p class="card-text">주소(Blog,Github : {{ user.site_address }}</p>
+                                        <p class="card-text">주소(Blog,Github) : {{ user.site_address }}</p>
                                         <p class="card-text">스파르타 아이덴티티 tmi : {{ user.tmi }}</p>
                                     </div>
                                 </div>
