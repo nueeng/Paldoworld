@@ -19,20 +19,30 @@
                                 <p>다이어리 모아보기</p>
                             </div>
                             <div class="ilchon">
-                                <p>게시판글을 붙이자</p>
-                                <p>게시판글을 붙이자</p>
-                                <p>게시판글을 붙이자</p>
-                                <p>게시판글을 붙이자</p>
-                                <p>게시판글을 붙이자</p>
-                                <p>게시판글을 붙이자</p>
-                                <p>게시판글을 붙이자</p>
-                                <p>게시판글을 붙이자</p>
-                                <p>게시판글을 붙이자</p>
-                                <p>게시판글을 붙이자</p>
-                                <p>게시판글을 붙이자</p>
-                                <p>게시판글을 붙이자</p>
-                                <p>게시판글을 붙이자</p>
-                                <p>게시판글을 붙이자</p>
-                                <p>게시판글을 붙이자</p>
+                                {% for tw in tweet %}
+                                <div class="col-md-12 mb-2">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="media-body">
+                                                <a href="/tweet/{{ tw.id }}" style="text-decoration: none;">
+                                                <h3 class="mt-0">{{ tw.title }}</h3>
+                                                </a>
+                                                <h5 class="mt-0" style="text-align: right;">{{ tw.author.username }}</h5>
+                                                </br>
+                                            </div>
+                                            <div style="text-align: right; margin-top:10px">
+                                                <a href="/tweet/{{ tw.id }}">
+                                                    <span class="btn btn-outline-info">보기</span>
+                                                </a>
+                                            </div>
+                                            <div class="media">
+                                                <div style="text-align: right">
+                                                    <span style="font-size: small">{{ tw.created_at|timesince }} 전</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
                             </div><!-- e:ilchon -->
 {% endblock %}
