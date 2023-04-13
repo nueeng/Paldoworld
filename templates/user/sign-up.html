@@ -86,6 +86,11 @@
                 <label for="tmi">tmi</label>
                 <input type="text" class="form-control" id="tmi" name="tmi">
             </div>
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
             <hr>
             <div class="right_form">
                 <button type="submit" class="btn btn-outline-info">회원가입</button>
