@@ -12,8 +12,8 @@
 }
 
 .login_css {
-    width: 500px;
-    height: 500px;
+    width: 550px;
+    height: 550px;
     position: absolute;
     z-index: 2;
     border-radius: 50%;
@@ -29,22 +29,31 @@
     width: 400px;
     margin: 0 auto;
     position: absolute;
+    z-index: 2;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /*border: 5px solid #01b3d5;*/
+    padding: 15px;
+    border-radius: 25px;
 }
-
+.form-control{
+    border: 1px solid #01b3d5 !important;
+}
+hr:not([size]) {background-color:#01b3d5}
 .right_form {
     text-align: right;
 }
-
+label {
+    margin-bottom: 10px !important;
+}
 .center_form {
     text-align: center;
 }
-
+.img_radius {border-radius: 25px;}
 .signup_css {
-    width: 800px;
-    height: 800px;
+    width: 850px;
+    height: 850px;
     position: absolute;
     z-index: 2;
     border-radius: 50%;
@@ -62,7 +71,7 @@
 
 .title-center {
     text-align: center;
-    margin-top: 50px;
+    margin:10px 0;
 }
 
 .form-area {
@@ -93,8 +102,10 @@ main #first {
     background-size: cover;
     background-repeat: no-repeat;
     padding: 50px;
+    position: relative;
+    z-index: 1;
 }
-
+.card {border-radius: 25px !important;}
 main #first #sec {
     border: 1px solid #000;
     margin: 0 auto;

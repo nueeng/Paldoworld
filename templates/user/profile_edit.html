@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
     프로필 수정
 {% endblock %}
@@ -8,9 +8,10 @@
 {% endblock %}
 {% block content %}
     <div class="container">
+    <img class="abs img_radius" src="{% static "img/lobby.png" %}">
         <div class="wrap">
             <h2 class="title-center"> 프로필 수정 </h2>
-            <form class="form-area" method="post" action="/profile_edit/">
+            <form class="form-area" method="post" action="/profile_edit/" style="width:70%;margin:0 auto;>
                 {% csrf_token %}
                  <div class="form-group mt-2 mb-2">
                     <label for="nickname">nickname</label>
