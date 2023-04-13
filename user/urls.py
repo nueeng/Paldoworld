@@ -8,5 +8,6 @@ urlpatterns = [
     path('profile_edit/', views.profile_edit_view, name='profile_edit'),
     path('follow/', views.userlist_view, name='userlist'),
     path('follow/<int:id>', views.follow_view,name='follow'),
+    path('my-page/', views.my_view, name='my-page'),
 
 ]

@@ -181,8 +181,12 @@ main #first #sec #thi .right .link {
     justify-content: center;
 
     position: absolute;
-    right: -129px;
+    right: -134px;
     top: 30px;
+}
+
+.b_radius {
+    border-radius: 25px !important;
 }
 
 /* #dddfe0 #01b3d5 #fefefe */
@@ -190,7 +194,7 @@ main #first #sec #thi .right .link a {
     background-color: #01b3d5;
     color: #fff;
     margin-top: 10px;
-    font-size: 2rem;
+    font-size: 1.5rem;
     line-height: 70px;
     border-radius: 25px;
     padding: 5px;
@@ -204,7 +208,6 @@ main #first #sec #thi .right .link a:hover {
 }
 
 
-
 main #first #sec #thi .right .link a:nth-child(1) {
     margin-top: 0;
 }
@@ -215,10 +218,14 @@ main #first #sec #thi .right .link a:nth-child(3) {}
 
 main #first #sec #thi .right .link a:nth-child(4) {}
 
-.active {
+.active1 {
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
     background-color: #fff !important;
     color: #000 !important;
     border: 2px solid #000 !important;
+    border-left: 0 !important;
+}
+.detail_delete {
+    margin-top:10px;
 }
