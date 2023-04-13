@@ -8,35 +8,33 @@
 {% endblock %}
 {% block content %}
     <div class="container">
-    <img class="abs img_radius" src="{% static "img/lobby.png" %}">
+{#        <img class="abs img_radius" src="{% static 'img/lobby.png' %}">#}
         <div class="wrap">
             <h2 class="title-center"> 프로필 수정 </h2>
-<<<<<<< HEAD
-            <form class="form-area" method="post" action="/profile_edit/" style="width:70%;margin:0 auto;>
-=======
-            <form class="form-area" method="post" action="/profile_edit/" enctype="multipart/form-data">
->>>>>>> main
+            <form class="form-area" method="post" action="/profile_edit/">
                 {% csrf_token %}
-                 <div class="form-group mt-2 mb-2">
+                <div class="form-group mt-2 mb-2">
                     <label for="nickname">닉네임</label>
-                    <input type="text" class="form-control" id="nickname" name="nickname" value="{{ request.user.nickname }}">
+                    <input type="text" class="form-control" id="nickname" name="nickname"
+                           value="{{ request.user.nickname }}">
                 </div>
                 <div class="form-group mt-2 mb-2">
                     <label for="speech">한줄소개</label>
-                    <input type="text" class="form-control" id="speech" name="speech" value="{{ request.user.speech}}">
+                    <input type="text" class="form-control" id="speech" name="speech" value="{{ request.user.speech }}">
                 </div>
                 <div class="form-group mt-2 mb-2">
                     <label for="site_address">주소(Blog,Github)</label>
-                    <input type="text" class="form-control" id="site_address" name="site_address" value="{{ request.user.site_address}}">
+                    <input type="text" class="form-control" id="site_address" name="site_address"
+                           value="{{ request.user.site_address }}">
                 </div>
                 <div class="form-group mt-2 mb-2">
                     <label for="tmi">tmi</label>
-                    <input type="text" class="form-control" id="tmi" name="tmi" value="{{ request.user.tmi}}">
+                    <input type="text" class="form-control" id="tmi" name="tmi" value="{{ request.user.tmi }}">
                 </div>
                 <br>
                 <div class="input-group mb-3">
-                    <label class="input-group-text" for="image">사진</label>
-                    <input type="file" class="form-control" id="image" name="image">
+                    <label class="input-group-text margin_zero" for="image">사진</label>
+                    <input type="file" class="form-control border_del" id="image" name="image">
                 </div>
                 <hr>
                 <div style="float: right">
