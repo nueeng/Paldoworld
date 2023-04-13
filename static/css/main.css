@@ -1,7 +1,19 @@
+@font-face {
+    font-family: 'DOSGothic';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+* {
+    font-family: 'DOSGothic';
+}
+
 .test {
     background-color: aqua
 }
-
+.write_btn {border-radius: 25px !important;
+    width: 200px;
+    margin: 10px auto;}
 .abs {
     position: absolute;
     width: 100%;
@@ -10,10 +22,16 @@
     top: 0;
     z-index: 1;
 }
-
+.margin_zero {
+    margin: 0 !important;
+    border: 1px solid #01b3d5 !important;
+}
+.border_del {
+    border: 0;
+}
 .login_css {
-    width: 500px;
-    height: 500px;
+    width: 550px;
+    height: 550px;
     position: absolute;
     z-index: 2;
     border-radius: 50%;
@@ -29,22 +47,31 @@
     width: 400px;
     margin: 0 auto;
     position: absolute;
+    z-index: 2;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    /*border: 5px solid #01b3d5;*/
+    padding: 15px;
+    border-radius: 25px;
 }
-
+.form-control{
+    border: 1px solid #01b3d5 !important;
+}
+hr:not([size]) {background-color:#01b3d5}
 .right_form {
     text-align: right;
 }
-
+label {
+    margin-bottom: 10px !important;
+}
 .center_form {
     text-align: center;
 }
-
+.img_radius {border-radius: 25px;}
 .signup_css {
-    width: 800px;
-    height: 800px;
+    width: 850px;
+    height: 850px;
     position: absolute;
     z-index: 2;
     border-radius: 50%;
@@ -62,7 +89,7 @@
 
 .title-center {
     text-align: center;
-    margin-top: 50px;
+    margin:10px 0;
 }
 
 .form-area {
@@ -93,19 +120,21 @@ main #first {
     background-size: cover;
     background-repeat: no-repeat;
     padding: 50px;
+    position: relative;
+    z-index: 1;
 }
-
+.card {border-radius: 25px !important;}
 main #first #sec {
     border: 1px solid #000;
     margin: 0 auto;
     background-color: #01b3d5;
-    width: 1550px;
+    width: 1200px;
     border-radius: 25px;
 }
 
 
 main #first #sec #thi {
-    border: 1px solid #000;
+    /*border: 1px solid #000;*/
     margin: 60px;
     background-color: #dddfe0;
     display: flex;
@@ -125,6 +154,8 @@ main #first #sec #thi .left {
 
 main #first #sec #thi .left .today_total {
     display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
 }
 
 main #first #sec #thi .left .txt_box {
@@ -147,7 +178,7 @@ main #first #sec #thi .right .link_left {
     display: flex;
     flex-flow: column nowrap;
     width: 1000px;
-    height: 1000px;
+    height: 770px;
 }
 
 main #first #sec #thi .right .link_left .top_title {
@@ -159,7 +190,6 @@ main #first #sec #thi .right .link_left .top_title p {
 
 main #first #sec #thi .right .link_left .mini {
     height: 70%;
-    margin-top: 100px;
 }
 
 main #first #sec #thi .right .link_left .mini img {
@@ -186,22 +216,24 @@ main #first #sec #thi .right .link {
     justify-content: center;
 
     position: absolute;
-    right: -110px;
+    right: -94px;
     top: 30px;
 }
 
 .b_radius {
     border-radius: 25px !important;
+    margin:0 20px;
 }
 
 /* #dddfe0 #01b3d5 #fefefe */
 main #first #sec #thi .right .link a {
+    text-decoration:none;
     background-color: #01b3d5;
     color: #fff;
     margin-top: 10px;
-    font-size: 1.5rem;
-    line-height: 70px;
-    border-radius: 25px;
+    font-size: 1.25rem;
+    line-height: 40px;
+    border-radius: 10px;
     padding: 5px;
     border: 2px solid #fff;
 }
