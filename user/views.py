@@ -21,6 +21,7 @@ def sign_up_view(request):  # 회원가입 함수
         speech = request.POST.get('speech', '')
         site_address = request.POST.get('site_address', '')
         tmi = request.POST.get('tmi', '')
+        image = request.FILES.get('image', '')
 
         if password != password2:
             return render(request, 'user/sign-up.html', {'error':'비밀번호를 확인해 주세요'})
@@ -32,7 +33,7 @@ def sign_up_view(request):  # 회원가입 함수
             if exist_user:
                 return render(request, 'user/sign-up.html',{'error':'사용자가 존재합니다.'})
             else:
-                UserModel.objects.create_user(username=username, password=password, speech=speech, nickname=nickname, site_address=site_address, tmi=tmi)
+                UserModel.objects.create_user(username=username, password=password, speech=speech, nickname=nickname, site_address=site_address, tmi=tmi, image=image)
                 return redirect('/login')
 
 
