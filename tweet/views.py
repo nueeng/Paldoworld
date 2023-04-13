@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import TweetModel, TweetComment
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 
 
 def main(request): # 메인페이지 렌더 함수 main_view로 변경 생각중
@@ -10,15 +9,14 @@ def main(request): # 메인페이지 렌더 함수 main_view로 변경 생각중
 
 def tweet(request):  # 게시글
     if request.method == 'GET': # GET 렌더 함수
-        all_tweet = TweetModel.objects.all().order_by('-created_at')
-        return render(request, 'tweet/tweet.html', {'tweet': all_tweet})
+        return render(request, 'tweet/tweet.html')
 
     elif request.method == 'POST': # POST 게시글 작성
         user = request.user
         title = request.POST.get('title', '')
         content = request.POST.get('my-content', '')
 
-        if content == "" or title == "":  # 빈 칸일 시 if문 처리
+        if content == '' or title == '':  # 빈 칸일 시 if문 처리
             return render(request, 'tweet/tweet.html', {'error': '다이어리를 입력해 주세요.'})
         else:
             my_tweet = TweetModel.objects.create(author=user, title=title, content=content)
@@ -47,25 +45,24 @@ def delete_tweet(request, id): # 게시글 삭제함수
 @login_required  # 게시글 수정 페이지로 이동하는 함수
 def edit_tweet(request, id):
     my_tweet = TweetModel.objects.get(id=id)
-    tweet_comment = TweetComment.objects.filter(
-        tweet_id=id).order_by('-created_at')
+    tweet_comment = TweetComment.objects.filter(tweet_id=id).order_by('-created_at')
     return render(request, 'tweet/tweet_edit.html', {'tweet': my_tweet, 'comment': tweet_comment})
 
 
 @login_required  # 게시글 실제로 수정하여 업데이트 하는 함수
 def update_tweet(request, id):
-    tweet_comment = TweetComment.objects.filter(
-        tweet_id=id).order_by('-created_at')
+    if request.method == 'POST': # PUT
+        update_tweet = TweetModel.objects.get(id=id)
+        update_tweet.title = request.POST.get('title', '')
+        update_tweet.content = request.POST.get('my-content', '')
+        print(update_tweet.title, update_tweet.content) # 미해결
 
-    update_tweet = TweetModel.objects.get(id=id)
-    update_tweet.title = request.POST.get("title", "")
-    update_tweet.content = request.POST.get("my-content", "")
-
-    if update_tweet.content == "" or update_tweet.title == "":
-        return render(request, 'tweet/tweet_edit.html', {'error': '다이어리를 입력해 주세요.'})
-    else:
-        update_tweet.save()
-        return render(request, 'tweet/tweet_detail.html', {'tweet': update_tweet, 'comment': tweet_comment})
+        if update_tweet.content == '' or update_tweet.title == '':
+            return render(request, 'tweet/tweet_edit.html', {'error': '다이어리를 입력해 주세요.'})
+        else:
+            update_tweet.save()
+            tweet_comment = TweetComment.objects.filter(tweet_id=id).order_by('-created_at')
+            return render(request, 'tweet/tweet_detail.html', {'tweet': update_tweet, 'comment': tweet_comment})
 
 
 @login_required  # 댓글 작성 함수
