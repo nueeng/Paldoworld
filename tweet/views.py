@@ -19,10 +19,7 @@ def tweet(request):  # 게시글
         content = request.POST.get('my-content', '')
 
         if content == "" or title == "":  # 빈 칸일 시 if문 처리
-            all_tweet = TweetModel.objects.all().order_by('-created_at')
-            # 이거 수정할 때 redirect로 할지 render로할지 정해서 게시글, 댓글 다 렌더 되도록해야함!
-            return HttpResponse("게시글이 빈칸 입니다.")
-            return render(request, 'tweet/tweet.html')  # 에러메세지 처리 뒤에
+            return render(request, 'tweet/tweet.html', {'error': '다이어리를 입력해 주세요.'})
         else:
             my_tweet = TweetModel.objects.create(author=user, title=title, content=content)
             my_tweet.save()
@@ -65,8 +62,7 @@ def update_tweet(request, id):
     update_tweet.content = request.POST.get("my-content", "")
 
     if update_tweet.content == "" or update_tweet.title == "":
-        return HttpResponse("다이어리를 작성해 주세요.")
-        return render(request, 'tweet/tweet_detail.html')  # 에러메세지 처리 뒤에
+        return render(request, 'tweet/tweet_edit.html', {'error': '다이어리를 입력해 주세요.'})
     else:
         update_tweet.save()
         return render(request, 'tweet/tweet_detail.html', {'tweet': update_tweet, 'comment': tweet_comment})

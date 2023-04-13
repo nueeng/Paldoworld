@@ -1,5 +1,3 @@
-<!-- templates/tweet/tweet_detail.html -->
-
 {% extends 'base.html' %}
 
 {% block title %}
@@ -18,15 +16,20 @@
                                     {% csrf_token %}
                                         <div class="mb-3">
                                             <label for="title" class="form-label">제목</label>
-                                            <input type="title" class="form-control" id="title" name='title'>
+                                            <input type="title" class="form-control" id="title" name='title' value="{{ request.tweet.title }}">
                                             <div id="titleHelp" class="form-text">다이어리를 꾸며주세요</div>
                                         </div>
                                         <div class="form-group mb-2">
                                             <textarea class="form-control" style="resize: none" name='my-content'
-                                                        id="my-content"></textarea>
+                                                        id="my-content" value="{{ request.tweet.content }}"></textarea>
                                         </div>
-                                    <button type="submit" class="btn btn-info" style="float:right;">수정하기
-                                    </button>
+                                        <hr>
+                                        {% if error %}
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ error }}
+                                        </div>
+                                        {% endif %}
+                                    <button type="submit" class="btn btn-info" style="float:right;">수정하기</button>
                                 </form>
                                 </p>
                             </div>

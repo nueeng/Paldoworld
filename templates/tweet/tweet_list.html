@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <div class="media-body">
                             <a href="/tweet/{{ tw.id }}">
-                            <h5 class="mt-0">{{ tw.title }}</h5>
+                            <h4 class="mt-0">{{ tw.title }}</h4>
                             </a>
                             <h6 class="mt-0">{{ tw.author.username }}</h6>
                         </div>
@@ -29,13 +29,6 @@
                                 <span class="btn btn-outline-info">보기</span>
                             </a>
                         </div>
-                        {% if tw.author == user %}
-                            <div style="text-align: right" class="detail_delete">
-                                <a href="/tweet/delete/{{ tw.id }}">
-                                    <span class="btn btn-outline-info bg-danger">삭제</span>
-                                </a>
-                            </div>
-                        {% endif %}
                         <div class="media">
                             <div style="text-align: right">
                                 <span style="font-size: small">{{ tw.author.username }}-{{ tw.created_at|timesince }} 전</span>

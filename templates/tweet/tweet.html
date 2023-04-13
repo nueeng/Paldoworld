@@ -17,8 +17,8 @@
                         <div class="media-body">
                             <h5 class="mt-0">다이어리</h5>
                             <p>
-                            <form action="/tweet/" method="post">
-                                {% csrf_token %}
+                                <form action="/tweet/" method="post">
+                                    {% csrf_token %}
                                     <div class="mb-3">
                                         <label for="title" class="form-label">제목</label>
                                         <input type="title" class="form-control" id="title" name='title'>
@@ -28,9 +28,14 @@
                                         <textarea class="form-control" style="resize: none" name='my-content'
                                                     id="my-content"></textarea>
                                     </div>
-                                <button type="submit" class="btn btn-info" style="float:right;">작성하기
-                                </button>
-                            </form>
+                                    <hr>
+                                    {% if error %}
+                                        <div class="alert alert-danger" role="alert">
+                                            {{ error }}
+                                        </div>
+                                    {% endif %}
+                                    <button type="submit" class="btn btn-info" style="float:right;">작성하기</button>
+                                </form>
                             </p>
                         </div>
                     </div>
