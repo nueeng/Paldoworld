@@ -3,8 +3,8 @@ let close = true
 console.log(link_a)
 
 link_a.forEach(function (t, i) {
-    t.addEventListener('click', function (e) {
-        e.preventDefault()
+    t.addEventListener('click', function () {
+        // e.preventDefault()
         close = true
         for (const n of link_a) { n.classList.remove('active1') }
         console.log('----')
