@@ -11,7 +11,7 @@
 {#        <img class="abs img_radius" src="{% static 'img/lobby.png' %}">#}
         <div class="wrap">
             <h2 class="title-center"> 프로필 수정 </h2>
-            <form class="form-area" method="post" action="/profile_edit/">
+            <form class="form-area" method="post" action="/profile_edit/" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div class="form-group mt-2 mb-2">
                     <label for="nickname">닉네임</label>

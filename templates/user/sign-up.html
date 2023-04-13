@@ -56,7 +56,7 @@
 <div class="signup_css">
     <div class="wrap">
         <h2 class="title-center margin_top_zero"> 회원가입 </h2>
-        <form class="form-area" method="post" action="/sign-up/">
+        <form class="form-area" method="post" action="/sign-up/" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-group mt-2 mb-2">
                 <label for="username">아이디</label>
@@ -86,6 +86,11 @@
                 <label for="tmi">tmi</label>
                 <input type="text" class="form-control" id="tmi" name="tmi">
             </div>
+            <br>
+            <div class="input-group mb-3">
+                <label class="input-group-text margin_zero" for="image">사진</label>
+                <input type="file" class="form-control border_del" id="image" name="image">
+            </div>
             {% if error %}
                 <div class="alert alert-danger" role="alert">
                     {{ error }}
@@ -95,7 +100,6 @@
             <div class="right_form">
                 <button type="submit" class="btn btn-outline-info">회원가입</button>
                 {# form 안에있으면 form을 실행시켜주는 역할을한다. #}
-                <a href="/login" class="btn btn-outline-secondary">로그인</a>
             </div>
         </form>
     </div>
