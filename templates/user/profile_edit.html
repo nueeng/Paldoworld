@@ -36,6 +36,11 @@
                     <label class="input-group-text margin_zero" for="image">사진</label>
                     <input type="file" class="form-control border_del" id="image" name="image">
                 </div>
+                {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                {% endif %}
                 <hr>
                 <div style="float: right">
                     <button type="submit" class="btn btn-outline-info">수정</button>
