@@ -15,7 +15,7 @@ def tweet(request):  # 게시글
 
     elif request.method == 'POST': # POST 게시글 작성
         user = request.user
-        title = title.POST.get('title', '')
+        title = request.POST.get('title', '')
         content = request.POST.get('my-content', '')
 
         if content == "" or title == "":  # 빈 칸일 시 if문 처리

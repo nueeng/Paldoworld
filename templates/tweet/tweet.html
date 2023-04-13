@@ -16,14 +16,13 @@
                     <div class="media">
                         <div class="media-body">
                             <h5 class="mt-0">다이어리</h5>
-                            <h5 class="mt-0">게시글</h5>
                             <p>
                             <form action="/tweet/" method="post">
                                 {% csrf_token %}
                                     <div class="mb-3">
                                         <label for="title" class="form-label">제목</label>
                                         <input type="title" class="form-control" id="title" name='title'>
-                                        <div id="titleHelp" class="form-text">다이어리</div>
+                                        <div id="titleHelp" class="form-text">다이어리를 꾸며주세요</div>
                                     </div>
                                     <div class="form-group mb-2">
                                         <textarea class="form-control" style="resize: none" name='my-content'
