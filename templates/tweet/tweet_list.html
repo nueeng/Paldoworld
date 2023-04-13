@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    게시판
+    다이어리
 {% endblock %}
 
 {% block name %}
-    게시판
+    다이어리
 {% endblock %}
 
 {% block content %}
@@ -19,7 +19,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="media-body">
-                            <h5 class="mt-0">{{ tw.content }}</h5>
+                            <a href="/tweet/{{ tw.id }}">
+                            <h5 class="mt-0">{{ tw.title }}</h5>
+                            </a>
                             <h6 class="mt-0">{{ tw.author.username }}</h6>
                         </div>
                         <div style="text-align: right; margin-top:10px">
