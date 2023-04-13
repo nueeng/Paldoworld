@@ -59,7 +59,8 @@ def login_view(request):
         else:
             return render(request, 'user/login.html')
 
-
+def my_view(request):
+    return render(request, 'base.html')
 @login_required # 사용자가 로그인이 되어있어야만 접근이 가능하다.라는 의미로 설정해준것
 def logout(request):
     auth.logout(request)
