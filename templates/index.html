@@ -15,13 +15,13 @@
                             <div class="mini">
                             <img src="{% static "img/miniroom.png" %}">
                             </div><!-- e:mini -->
-                            <div class="ilchon_title" style="margin: 0 0 0 40px;">
-                                <p>다이어리 모아보기</p>
+                            <div class="ilchon_title">
+                                <p style="margin-left:20px;">다이어리 모아보기</p>
                             </div>
-                            <div class="ilchon">
+                            <div class="ilchon pad_20">
                                 {% for tw in tweet %}
                                 <div class="col-md-12 mb-2">
-                                    <div class="card">
+                                    <div class="card mb_20">
                                         <div class="card-body">
                                             <div class="media-body">
                                                 <a href="/tweet/{{ tw.id }}" style="text-decoration: none;">
