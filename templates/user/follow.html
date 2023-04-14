@@ -1,47 +1,24 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
-    일촌
+    일촌 (공사중)
 {% endblock %}
 
 {% block name %}
-    일촌
+    일촌 (공사중)
 {% endblock %}
 
 {% block content %}
-    <div class="container timeline-container">
-        <div class="row">
-            <!-- 오른 쪽 컬럼-->
-            <div class="col-md-7">
-                <div class="alert alert-success" role="alert">
-                    나를 일촌 하는 사람 수 : {{ user.followee.count }} 명 / 내가 일촌 하는 사람 수 : {{ user.follow.count }} 명
-                </div>
-                <div class="row">
-                    <!-- 사용자 리스트 반복문 -->
-                    {% for ul in user_list %}
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ ul.nickname }}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">{{ ul.site_address }}</h6>
-                                <p class="card-text">
-                                    {{ ul.nickname|linebreaks }}
-                                    {{ ul.speech|linebreaks }}
-                                    {{ ul.tmi }}
-                                </p>
-                                <p class="card-text">
-                                    내가 맺은 일촌 {{ ul.follow.count }} 명 / 나를 맺은 일촌 {{ ul.follower.count }} 명
-                                </p>
-                                {% if ul in user.follow.all %}
-                                    <a href="/follow/{{ ul.id }}" class="card-link">[일촌 취소]</a>
-                                {% else %}
-                                    <a href="/follow/{{ ul.id }}" class="card-link">[일촌]</a>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <hr>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="anima">
+        <h3 class="h3_title">정지.정지.정지.<br>공사중입니다..........</h3>
+        <h3 class="h3_title">모든 아바타를 멈추면 다음 페이지가 나옵니다.</h3>
+        <div class="step">
+            <div class="stepbox"></div><!-- e:stepbox -->
+            <div class="stepbox s1"></div><!-- e:stepbox1 -->
+            <div class="stepbox s2"></div><!-- e:stepbox2 -->
+            <div class="stepbox s3"></div><!-- e:stepbox3 -->
+            <div class="stepbox s4"></div><!-- e:stepbox4 -->
+        </div><!-- e:step -->
+    <h3 class="h3_hide">못멈춥니다.....ㅎㅎㅎㅎㅎ</h3>
+    </div><!-- e:anima -->
 {% endblock %}
