@@ -64,7 +64,8 @@ def update_tweet(request, id):
         print(update_tweet.title, update_tweet.content) # 미해결
 
         if update_tweet.content == '' or update_tweet.title == '':
-            return render(request, 'tweet/tweet_edit.html', {'error': '다이어리를 입력해 주세요.'})
+            return redirect('/tweet/edit/'+str(id)) # url이 /tweet/edit/48 이런식이라 안되는건가? 하는 예상..
+            # return render(request, 'tweet/tweet_edit.html', {'error': '다이어리를 입력해 주세요.'})
         else:
             update_tweet.save()
             tweet_comment = TweetComment.objects.filter(tweet_id=id).order_by('-created_at')
