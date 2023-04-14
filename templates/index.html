@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-    Home
+    홈
 {% endblock %}
 
 {% block name %}
-    Home
+    홈
 {% endblock %}
 
 {% block content %}
 <div class="top_title">
-                                <p>username의 미니룸</p>
+                                <p style="margin: 20px 0 0 5px;">{{ user.nickname }}님의 미니룸</p>
                             </div>
                             <div class="mini">
                             <img src="{% static "img/miniroom.png" %}">
                             </div><!-- e:mini -->
-                            <div class="ilchon_title">
+                            <div class="ilchon_title" style="margin: 0 0 0 40px;">
                                 <p>다이어리 모아보기</p>
                             </div>
                             <div class="ilchon">
