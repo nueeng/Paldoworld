@@ -195,6 +195,8 @@ main #first #sec #thi .right {
     width: 70%;
     position: relative;
     border-radius: 25px;
+    min-width: 750px;
+    min-height: 770px;
 }
 
 main #first #sec #thi .right .link_left {
@@ -319,6 +321,7 @@ main #first #sec #thi .right .link a:nth-child(4) {
 .pad_20 {
     padding: 20px;
 }
+
 .mb_20 {
-    margin-bottom:20px;
+    margin-bottom: 20px;
 }
