@@ -1,39 +1,56 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block title %}
     {{ owner_username }}님의 방명록
 {% endblock %}
 {% block name %}
     {{ owner_username }}님의 방명록
 {% endblock %}
-
 {% block content %}
-  <h2>{{ request.user.nickname }}님의 방명록</h2>
-  {% if user.is_authenticated %}
-    <form method="POST" action="{% url 'guestbook' %}">
-      {% csrf_token %}
-      <div>
-        <label for="my-content"></label>
-        <textarea id="my-content" name="my-content" required></textarea>
-      </div>
-      <button type="submit">작성</button>
-    </form>
-
-    <hr>
-
-    {% for entry in guestbook %}
-      <div class="entry">
-        <div class="author">{{ entry.author_nickname }}</div>
-        <div class="content">{{ entry.content }}</div>
-        <div class="created_at">{{ entry.created_at }}</div>
-        {% if entry.author == request.user %}
-          <a href="{% url 'edit' entry.id %}">수정</a>
-          <a href="{% url 'delete' entry.id %}">삭제</a>
-        {% endif %}
-      </div>
-    {% endfor %}
-  {% else %}
-    <p>로그인 후 방명록을 작성하실 수 있습니다.</p>
-    <a href="{% url 'login' %}">로그인</a>
-  {% endif %}
+    <h2 class="guest_title">{{ request.user.nickname }}님의 방명록</h2>
+    {% if user.is_authenticated %}
+        <div class="gb_box">
+            <div class="left_img">
+                <img src="{% static "img/maple.png" %}">
+            </div><!-- e:left_img -->
+            <div class="right_txt_box">
+                <form method="POST" action="{% url 'guestbook' %}">
+                    {% csrf_token %}
+                    <div class="text_box">
+                        <label for="my-content"></label>
+                        <textarea id="my-content" name="my-content" required></textarea>
+                    </div><!-- e:text_box -->
+                    <button class="btn btn-outline-info" type="submit">작성</button>
+                </form>
+            </div><!-- e:right_txt_box -->
+        </div><!-- e:gb_box -->
+        <hr>
+        <div class="entry_box">
+            {% for entry in guestbook %}
+                <div class="entry">
+                    <div class="time_name_box">
+                        <div class="author">{{ entry.author_nickname }}</div>
+                        <div class="created_at">{{ entry.created_at }}</div>
+                    </div><!-- e:time_name_box -->
+                    <div class="content_box">
+                        <div class="img_box">
+                            <img src="{% static "img/maple.png" %}">
+                        </div><!-- e:img_box -->
+                        <div class="content">
+                            {{ entry.content }}
+                        </div><!-- e:content -->
+                    </div><!-- e:content_box -->
+                    {% if entry.author == request.user %}
+                        <div class="del_edit_btn">
+                            <a class="btn btn-outline-info" href="{% url 'edit' entry.id %}">수정</a>
+                            <a class="btn btn-outline-danger" href="{% url 'delete' entry.id %}">삭제</a>
+                        </div><!-- e:del_edit_btn -->
+                    {% endif %}
+                </div><!-- e:entry -->
+            {% endfor %}
+        </div><!-- e:entry_box -->
+    {% else %}
+        <p>로그인 후 방명록을 작성하실 수 있습니다.</p>
+        <a href="{% url 'login' %}">로그인</a>
+    {% endif %}
 {% endblock %}
