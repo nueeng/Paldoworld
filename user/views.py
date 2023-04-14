@@ -82,6 +82,7 @@ def profile_edit_view(request):
         if user.nickname == '' or user.speech == '' or user.site_address == '' or user.tmi == '' or user.birthday == '':
             return render(request, 'user/profile_edit.html', {'error': '모든 박스를 채워주세요!'})
 
+
         user.save()
         return redirect('/')
     else:
