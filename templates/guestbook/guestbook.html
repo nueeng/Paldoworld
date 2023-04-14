@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-    {{ owner_username }}님의 방명록
+    {{ request.user.nickname }}님의 방명록
 {% endblock %}
 {% block name %}
-    {{ owner_username }}님의 방명록
+    {{ request.user.nickname }}님의 방명록
 {% endblock %}
 {% block content %}
     <h2 class="guest_title">{{ request.user.nickname }}님의 방명록</h2>
@@ -29,7 +29,7 @@
             {% for entry in guestbook %}
                 <div class="entry mg_20">
                     <div class="time_name_box">
-                        <div class="author">{{ entry.author_nickname }}</div>
+                        <div class="author">{{ entry.author.nickname }}</div>
                         <div class="created_at">{{ entry.created_at }}</div>
                     </div><!-- e:time_name_box -->
                     <div class="content_box">

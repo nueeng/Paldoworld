@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-    프로필 수정
+    프로필
 {% endblock %}
 {% block name %}
-    프로필 수정
+    프로필
 {% endblock %}
 {% block content %}
     <div class="container">
@@ -30,6 +30,11 @@
                 <div class="form-group mt-2 mb-2">
                     <label for="tmi">tmi</label>
                     <input type="text" class="form-control" id="tmi" name="tmi" value="{{ request.user.tmi }}">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                    <label for="birthday">생년월일 : </label>
+                    <input type="date" name="birthday" value="{{ request.user.birthday|date:'Y-m-d' }}" required
+                           min="1900-01-01" max="2023-01-01">
                 </div>
                 <br>
                 <div class="input-group mb-3">

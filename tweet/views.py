@@ -14,16 +14,20 @@ def tweet(request):  # 게시글
         return render(request, 'tweet/tweet.html')
 
     elif request.method == 'POST': # POST 게시글 작성
-        user = request.user
+        user = request.user.is_authenticated
         title = request.POST.get('title', '')
         content = request.POST.get('my-content', '')
 
-        if content == '' or title == '':  # 빈 칸일 시 if문 처리
+        if content == '' or title == '':  # 빈 칸일 시 validation
             return render(request, 'tweet/tweet.html', {'error': '다이어리를 입력해 주세요.'})
-        else:
-            my_tweet = TweetModel.objects.create(author=user, title=title, content=content)
-            my_tweet.save()
-            return redirect('/tweet_list')
+        else: # 로그인 안되어있을 시 validation
+            if user:
+                user = request.user # 여기서 is_authenticated 하면 ValueError Cannot assign "True" ~ must be a instance
+                my_tweet = TweetModel.objects.create(author=user, title=title, content=content)
+                my_tweet.save()
+                return redirect('/tweet_list')
+            else:
+                return render(request, 'tweet/tweet.html', {'error': '다이어리 작성은 로그인이 필요해요.'})
         
 def tweet_list(request):
     if request.method == 'GET': # GET 렌더 함수

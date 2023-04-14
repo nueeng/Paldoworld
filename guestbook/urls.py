@@ -7,3 +7,5 @@ urlpatterns = [
     path('delete/<int:id>', views.delete_guestbook, name='delete'),
     path('<str:username>/', views.view_guestbook, name='view'),
 ]
+#path('<str:username>/', views.view_guestbook, name='view'),
+# = OO님의 방명록 에서 OO을 출력하는데 사용

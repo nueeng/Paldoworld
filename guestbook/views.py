@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
-from .models import GuestbookModel, UserModel
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from .models import GuestbookModel
 from user.models import UserModel
 from django.utils import timezone
@@ -50,10 +48,7 @@ def delete_guestbook(request, id):
     my_guestbook.delete()
     return redirect('guestbook')
 
-# ...
-
-from django.http import Http404
-
+# 다른 사용자의 방명록을 볼 수 있게 해줍니다.
 @login_required
 def view_guestbook(request, username):
     try:
@@ -72,7 +67,7 @@ def view_guestbook(request, username):
         'owner': owner,
         'guestbook': guestbook,
     }
-    return render(request, 'guestbook/guestbook.html', context=context)
+    return render(request, 'guestbook/guestbook.html', context)
 
 
 
