@@ -10,7 +10,11 @@
 
 {% block content %}
 <div class="top_title">
-                                <p style="margin: 20px 0 0 5px;">{{ user.nickname }}님의 미니룸</p>
+                            {% if user.is_authenticated %}
+                            <p style="margin: 20px 0 0 5px;">{{ user.nickname }}님의 미니룸</p>
+                            {% else %}
+                            <p style="margin: 20px 0 0 5px;">8&#186;월드에 어서오세요!</p>
+                            {% endif %}
                             </div>
                             <div class="mini">
                             <img src="{% static "img/miniroom.png" %}">
@@ -19,7 +23,7 @@
                                 <p style="margin-left:20px;">다이어리 모아보기</p>
                             </div>
                             <div class="ilchon pad_20">
-                                {% for tw in tweet %}
+                                {% for tw in tweet|slice:":3" %}
                                 <div class="col-md-12 mb-2">
                                     <div class="card mb_20">
                                         <div class="card-body">
