@@ -122,11 +122,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'user.UserModel'
 
-STATIC_URL = '/static/'
-
-MEDIA_URL = '/media/' # 이미지 업로드 위해 두줄 추가
+MEDIA_URL = '/media/'  # 이미지 업로드 위해 두줄 추가
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
