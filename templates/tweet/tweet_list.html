@@ -10,34 +10,37 @@
 
 {% block content %}
     <!-- 작성 된 글이 나오는 곳 -->
-    <div class="row">
+    <div class="row" style="overflow-y: auto;">
         <div class="d-grid gap-2">
-            <a href="/tweet/" class="btn btn-primary btn-lg write_btn" type="button" style="margin-bottom: 15px;">다이어리 작성하기</a>
+            <a href="/tweet/" class="btn btn-primary btn-lg write_btn" type="button" style="margin:30px auto;width: 220px;">다이어리
+                작성하기</a>
         </div>
-        {% for tw in tweet %}
-            <div class="col-md-12 mb-2">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="media-body">
-                            <a href="/tweet/{{ tw.id }}" style="text-decoration: none;">
-                            <h3 class="mt-0">{{ tw.title }}</h3>
-                            </a>
-                            <h5 class="mt-0" style="text-align: right;">{{ tw.author.username }}</h5>
-                            </br>
-                        </div>
-                        <div style="text-align: right; margin-top:10px">
-                            <a href="/tweet/{{ tw.id }}">
-                                <span class="btn btn-outline-info">보기</span>
-                            </a>
-                        </div>
-                        <div class="media">
-                            <div style="text-align: right">
-                                <span style="font-size: small">{{ tw.created_at|timesince }} 전</span>
+        <div class="diary_box">
+            {% for tw in tweet %}
+                <div class="col-md-12 mb-2" style="padding: 0 20px 0;">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="media-body">
+                                <a href="/tweet/{{ tw.id }}" style="text-decoration: none;">
+                                    <h3 class="mt-0">{{ tw.title }}</h3>
+                                </a>
+                                <h5 class="mt-0" style="text-align: right;">{{ tw.author.username }}</h5>
+                                </br>
+                            </div>
+                            <div style="text-align: right; margin-top:10px">
+                                <a href="/tweet/{{ tw.id }}">
+                                    <span class="btn btn-outline-info">보기</span>
+                                </a>
+                            </div>
+                            <div class="media">
+                                <div style="text-align: right">
+                                    <span style="font-size: small">{{ tw.created_at|timesince }} 전</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div><!-- diary_box -->
     </div>
 {% endblock %}

@@ -127,7 +127,8 @@ label {
     color: #0dd4f6;
 }
 
-main {}
+main {
+}
 
 main #first {
     width: 100%;
@@ -180,9 +181,11 @@ main #first #sec #thi .left .today_total {
     margin-top: 20px;
 }
 
-main #first #sec #thi .left .txt_box {}
+main #first #sec #thi .left .txt_box {
+}
 
-main #first #sec #thi .left .history {}
+main #first #sec #thi .left .history {
+}
 
 main #first #sec #thi .right {
     border: 1px solid #000;
@@ -223,7 +226,8 @@ main #first #sec #thi .right .link_left .mini img {
     width: 100%;
 }
 
-main #first #sec #thi .right .link_left .ilchon_title {}
+main #first #sec #thi .right .link_left .ilchon_title {
+}
 
 main #first #sec #thi .right .link_left .ilchon_title p {
     font-size: 2rem;
@@ -275,11 +279,14 @@ main #first #sec #thi .right .link a:nth-child(1) {
     margin-top: 0;
 }
 
-main #first #sec #thi .right .link a:nth-child(2) {}
+main #first #sec #thi .right .link a:nth-child(2) {
+}
 
-main #first #sec #thi .right .link a:nth-child(3) {}
+main #first #sec #thi .right .link a:nth-child(3) {
+}
 
-main #first #sec #thi .right .link a:nth-child(4) {}
+main #first #sec #thi .right .link a:nth-child(4) {
+}
 
 .active1 {
     border-top-left-radius: 0 !important;
@@ -292,4 +299,26 @@ main #first #sec #thi .right .link a:nth-child(4) {}
 
 .detail_delete {
     margin-top: 10px;
+}
+
+.deledit_btnbox {
+    align-items: center;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: right;
+}
+
+.deledit_btnbox div:nth-child(1) a {
+    margin-right: 10px
+}
+
+.pad_50 {
+    padding: 50px
+}
+
+.pad_20 {
+    padding: 20px;
+}
+.mb_20 {
+    margin-bottom:20px;
 }

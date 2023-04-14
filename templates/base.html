@@ -45,14 +45,14 @@
                     </li>
                 </ul>
             {% else %}
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav mr-auto" style="align-items:center;">
                     <li class="nav-item disabled">
                         <span class="nav-link">
-                            <h4>{{ user.nickname }} 님 어서오세요.</h4>
+                            <p style="margin-bottom:0;">{{ user.nickname }} 님 어서오세요.</p>
                         </span>
                     </li>
                     <li class="nav-item active">
-                        <h4><a class="nav-link" href="/logout"> 로그아웃</a></h4>
+                        <p style="margin-bottom:0;"> <a class="nav-link" href="/logout"> 로그아웃</a></p>
                     </li>
                 </ul>
             {% endif %}

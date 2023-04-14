@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="row">
+    <div class="row" style="padding: 50px">
         <div class="col-md-12 mb-2">
             <div class="card">
                 <div class="card-body">
@@ -15,16 +15,19 @@
                             <h5 class="mt-0">{{ tweet.content }}</h5>
                         </div>
                         {% if tweet.author == user %}
-                            <div style="text-align: right">
-                                <a href="/tweet/edit/{{ tweet.id }}">
-                                    <span class="btn btn-info">수정</span>
-                                </a>
-                            </div>
-                            <div style="text-align: right">
-                                <a href="/tweet/delete/{{ tweet.id }}">
-                                    <span class="btn bg-danger" style="margin-top:10px">삭제</span>
-                                </a>
-                            </div>
+                            <div class="deledit_btnbox">
+                                <div style="text-align: right">
+                                    <a href="/tweet/edit/{{ tweet.id }}" class="btn btn-info" style="color:#fff">
+                                        수정
+                                    </a>
+                                </div>
+                                <div style="text-align: right">
+                                    <a href="/tweet/delete/{{ tweet.id }}" class="btn btn-danger">
+                                        삭제
+                                    </a>
+                                </div>
+                            </div><!-- e:deledit_btnbox -->
+
                         {% endif %}
                         <div style="text-align: right">
                             <span style="font-size: small">{{ tweet.author.username }}-{{ tweet.created_at|timesince }} 전</span>
@@ -35,7 +38,7 @@
         </div>
     </div>
     <!-- 글 작성 하는 곳 -->
-    <form class="input-group mb-3" action="/tweet/comment/{{ tweet.id }}" method="post">
+    <form class="input-group mb-3" action="/tweet/comment/{{ tweet.id }}" method="post" style="padding:0 50px">
         {% csrf_token %}
         <input type="text" class="form-control" id='comment' name='comment' placeholder="댓글을 작성 해 주세요"/>
         <button class="btn btn-outline-secondary" type="submit">작성</button>
