@@ -18,12 +18,16 @@ def tweet(request):  # 게시글
         title = request.POST.get('title', '')
         content = request.POST.get('my-content', '')
 
-        if content == '' or title == '':  # 빈 칸일 시 if문 처리
+        if content == '' or title == '':  # 빈 칸일 시 validation
             return render(request, 'tweet/tweet.html', {'error': '다이어리를 입력해 주세요.'})
-        else:
-            my_tweet = TweetModel.objects.create(author=user, title=title, content=content)
-            my_tweet.save()
-            return redirect('/tweet_list')
+        else: # 로그인 안되어있을 시 validation
+            user = request.user.is_authenticated
+            if user:
+                my_tweet = TweetModel.objects.create(author=user, title=title, content=content)
+                my_tweet.save()
+                return redirect('/tweet_list')
+            else:
+                return render(request, 'tweet/tweet.html', {'error': '다이어리 작성은 로그인이 필요해요.'})
         
 def tweet_list(request):
     if request.method == 'GET': # GET 렌더 함수
