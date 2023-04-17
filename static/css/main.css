@@ -89,8 +89,8 @@ label {
 }
 
 .signup_css {
-    width: 850px;
-    height: 850px;
+    width: 900px;
+    height: 900px;
     position: absolute;
     z-index: 2;
     border-radius: 50%;
