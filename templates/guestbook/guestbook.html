@@ -39,8 +39,8 @@
                     <div class="content_box">
                         <div class="img_box">
                                 {% if user.is_authenticated %}
-                                    {% if user.image %}
-                                        <img src="{{ user.image.url }}" class="img-thumbnail" alt="유저프로필">
+                                    {% if entry.author.image %}
+                                        <img src="{{ entry.author.image.url }}" class="img-thumbnail" alt="유저프로필">
                                     {% endif %}
                                 {% endif %}
                         </div><!-- e:img_box -->
