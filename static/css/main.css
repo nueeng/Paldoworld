@@ -89,11 +89,11 @@ label {
 }
 
 .signup_css {
-    width: 900px;
+    width: 500px;
     height: 900px;
     position: absolute;
     z-index: 2;
-    border-radius: 50%;
+    border-radius: 25px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
