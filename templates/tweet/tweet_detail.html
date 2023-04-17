@@ -44,26 +44,28 @@
         <button class="btn btn-outline-secondary" type="submit">작성</button>
     </form>
     <hr>
-    <!-- 반복문이 들어 갈 곳 -->
-    {% for cm in comment %}
-        <div class="row pad_20">
-            <div class="col-md-12">
-                <div class="media">
-                    <div class="media-body">
-                        <h5 class="mt-0"> {{ cm.comment }} </h5>
-                        <span> {{ cm.author }} </span>
-                        <span> - {{ cm.created_at | timesince }} 전</span>
-                    </div>
-                    {% if cm.author == user %}
-                        <div style="float: right" class="detail_delete">
-                            <a href="/tweet/comment/delete/{{ cm.id }}">
-                                <span class="btn bg-danger">삭제</span>
-                            </a>
+    <div style="overflow-y: auto">
+        <!-- 반복문이 들어 갈 곳 -->
+        {% for cm in comment %}
+            <div class="row pad_20">
+                <div class="col-md-12">
+                    <div class="media">
+                        <div class="media-body">
+                            <h5 class="mt-0"> {{ cm.comment }} </h5>
+                            <span> {{ cm.author }} </span>
+                            <span> - {{ cm.created_at | timesince }} 전</span>
                         </div>
-                    {% endif %}
+                        {% if cm.author == user %}
+                            <div style="float: right" class="detail_delete">
+                                <a href="/tweet/comment/delete/{{ cm.id }}">
+                                    <span class="btn bg-danger">삭제</span>
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr>
-    {% endfor %}
+            <hr>
+        {% endfor %}
+    </div>
 {% endblock %}
