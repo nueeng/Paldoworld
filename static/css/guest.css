@@ -91,7 +91,7 @@
 .content_box .img_box {
     margin-left: 10px;
     width: 20%;
-    border: 1px solid;
+    min-width: 180px;
 }
 
 .entry .del_edit_btn a {
