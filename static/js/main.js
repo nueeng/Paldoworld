@@ -21,18 +21,16 @@ link_a.forEach(function (t, i) {
         if (close == true) {
             link_a[i].classList.add('active1');
             close = false;
-            localStorage.setItem('activeLink', t.href); // Store the clicked link's href value
+            localStorage.setItem('activeLink', t.href);
         } else {
             close = true;
         }
     });
 });
 
-// Check if there is a value stored in localStorage for the active link
 if (localStorage.getItem('activeLink')) {
     const activeLink = localStorage.getItem('activeLink');
 
-    // Find the link with the stored href value and add the active class to it
     link_a.forEach((link) => {
         if (link.href === activeLink) {
             link.classList.add('active1');
