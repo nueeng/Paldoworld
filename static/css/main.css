@@ -268,6 +268,7 @@ main #first #sec #thi .right .link a {
     border-radius: 10px;
     padding: 5px;
     border: 2px solid #fff;
+    text-align: center;
 }
 
 main #first #sec #thi .right .link a:hover {
