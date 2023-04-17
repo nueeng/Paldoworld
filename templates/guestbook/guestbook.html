@@ -11,7 +11,11 @@
     {% if user.is_authenticated %}
         <div class="gb_box">
             <div class="left_img">
-                <img src="{% static "img/maple.png" %}">
+                                {% if user.is_authenticated %}
+                                    {% if user.image %}
+                                        <img src="{{ user.image.url }}" class="img-thumbnail" alt="유저프로필">
+                                    {% endif %}
+                                {% endif %}
             </div><!-- e:left_img -->
             <div class="right_txt_box">
                 <form method="POST" action="{% url 'guestbook' %}">
@@ -34,7 +38,11 @@
                     </div><!-- e:time_name_box -->
                     <div class="content_box">
                         <div class="img_box">
-                            <img src="{% static "img/maple.png" %}">
+                                {% if user.is_authenticated %}
+                                    {% if user.image %}
+                                        <img src="{{ user.image.url }}" class="img-thumbnail" alt="유저프로필">
+                                    {% endif %}
+                                {% endif %}
                         </div><!-- e:img_box -->
                         <div class="content">
                             {{ entry.content }}
