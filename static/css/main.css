@@ -89,11 +89,11 @@ label {
 }
 
 .signup_css {
-    width: 850px;
-    height: 850px;
+    width: 500px;
+    height: 900px;
     position: absolute;
     z-index: 2;
-    border-radius: 50%;
+    border-radius: 25px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -268,6 +268,7 @@ main #first #sec #thi .right .link a {
     border-radius: 10px;
     padding: 5px;
     border: 2px solid #fff;
+    text-align: center;
 }
 
 main #first #sec #thi .right .link a:hover {

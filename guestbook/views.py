@@ -55,20 +55,16 @@ def view_guestbook(request, username):
         owner = UserModel.objects.get(nickname=username)
     except UserModel.DoesNotExist:
         raise Http404()
-
     if request.method == 'POST':
         content = request.POST.get('my-content', '')
         author_nickname = request.user.nickname
-        guestbook = GuestbookModel.objects.create(content=content, author=request.user, author_nickname=author_nickname)
+        author_img = request.user.image
+        guestbook = GuestbookModel.objects.create\
+            (content=content, author=request.user, author_nickname=author_nickname, author_img=author_img)
         owner.guestbook.add(guestbook)
-
     guestbook = owner.guestbook.all().order_by('-created_at')
     context = {
         'owner': owner,
         'guestbook': guestbook,
     }
     return render(request, 'guestbook/guestbook.html', context)
-
-
-
-
