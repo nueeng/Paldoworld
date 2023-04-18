@@ -77,7 +77,7 @@ def profile_edit_view(request):
         user.site_address = request.POST.get('site_address','')
         user.tmi = request.POST.get('tmi','')
         user.birthday = request.POST.get('birthday', '')
-        user.image = request.FILES.get('image',None)
+        user.image = request.FILES.get('image', '')
 
         if user.nickname == '' or user.speech == '' or user.site_address == '' or user.tmi == '' or user.birthday == '':
             return render(request, 'user/profile_edit.html', {'error': '모든 박스를 채워주세요!'})

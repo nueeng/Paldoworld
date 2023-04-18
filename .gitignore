@@ -1,5 +1,10 @@
-# Created by https://www.toptal.com/developers/gitignore/api/pycharm,python,django
-# Edit at https://www.toptal.com/developers/gitignore?templates=pycharm,python,django
+### Custom ###
+secrets.json
+.idea/
+migrations/
+
+# Created by https://www.toptal.com/developers/gitignore/api/python,django,pycharm
+# Edit at https://www.toptal.com/developers/gitignore?templates=python,django,pycharm
 
 ### Django ###
 *.log
@@ -376,9 +381,4 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
-# End of https://www.toptal.com/developers/gitignore/api/pycharm,python,django
-/.idea/misc.xml
-/.idea/paldoworld-1.iml
-/.idea/inspectionProfiles/profiles_settings.xml
-/.idea/inspectionProfiles/Project_Default.xml
-/.idea/vcs.xml
+# End of https://www.toptal.com/developers/gitignore/api/python,django,pycharm

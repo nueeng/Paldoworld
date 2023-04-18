@@ -52,7 +52,7 @@ def delete_guestbook(request, id):
 @login_required
 def view_guestbook(request, username):
     try:
-        owner = UserModel.objects.get(nickname=username)
+        owner = UserModel.objects.get(username=username)
     except UserModel.DoesNotExist:
         raise Http404()
     if request.method == 'POST':
