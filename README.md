@@ -4,8 +4,9 @@
 <br/>
 내배캠 스파르타인들을 위한 SNS 서비스입니다.
 
-![화면 캡처 2023-04-18 111911](https://user-images.githubusercontent.com/127704498/232655615-6ff438e4-43b7-4a4a-80dd-7670e562b66a.png)
+<br/>
 
+![화면 캡처 2023-04-18 111911](https://user-images.githubusercontent.com/127704498/232655615-6ff438e4-43b7-4a4a-80dd-7670e562b66a.png)
 <br/>
 
 ## 🎨 Stacks
