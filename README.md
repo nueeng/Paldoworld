@@ -52,3 +52,10 @@ app - user, tweet(게시글), guestbook(방명록)
  - 방명록 작성
  - 방명록 수정 / 삭제
  
+ <br/>
+ 
+ ## Team
+ 마동휘 : https://github.com/madonghwi
+ 이미진 : https://github.com/mijinleee
+ 최진규 : https://github.com/kyuparfum
+ 최준영 : https://github.com/nueeng
